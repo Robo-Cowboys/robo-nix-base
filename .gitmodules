@@ -1,0 +1,4 @@
+[submodule "nyx"]
+	path = nyx
+	url = https://github.com/Spacebar-Cowboys/nyx.git
+	branch = feat/convert-to-flake
