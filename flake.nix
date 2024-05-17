@@ -18,19 +18,20 @@
         inputs.treefmt-nix.flakeModule
 
         # parts of the flake
-#        ./nyx/flake/apps # apps provided by the flake
-#        ./flake/checks # checks that are performed on `nix flake check`
-        ./nyx/flake/lib # extended library on top of `nixpkgs.lib`
-        ./nyx/flake/modules # nixos and home-manager modules provided by this flake
-#        ./flake/pkgs # packages exposed by the flake
-#        ./flake/pre-commit # pre-commit hooks, performed before each commit inside the devShell
-#        ./flake/templates # flake templates
+        #        ./nyx/flake/apps # apps provided by the flake
+        #        ./flake/checks # checks that are performed on `nix flake check`
+        "${inputs.nyx}/flake/lib" # extended library on top of `nixpkgs.lib`
+        "${inputs.nyx}/flake/modules" # nixos and home-manager modules provided by this flake
+        #        ./flake/pkgs # packages exposed by the flake
+        "${inputs.nyx}/flake/pre-commit" # pre-commit hooks, performed before each commit inside the devShell
+        #        ./flake/templates # flake templates
 
-        ./nyx/flake/args.nix # args that are passed to the flake, moved away from the main file
-#        ./flake/deployments.nix # deploy-rs configurations for active hosts
-        ./nyx/flake/fmt.nix # various formatter configurations for this flake
-        ./nyx/flake/iso-images.nix # local installation media
-        ./nyx/flake/shell.nix # devShells exposed by the flake
+        ./flake/keys.nix
+        "${inputs.nyx}/flake/args.nix" # args that are passed to the flake, moved away from the main file
+        #        ./flake/deployments.nix # deploy-rs configurations for active hosts
+        "${inputs.nyx}/flake/fmt.nix" # various formatter configurations for this flake
+        "${inputs.nyx}/flake/iso-images.nix" # local installation media
+        "${inputs.nyx}/flake/shell.nix" # devShells exposed by the flake
       ];
 
       flake = {
@@ -60,9 +61,14 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
+    nyx = {
+      flake = false;
+      url = "path:/home/sincore/source/nyx-snowfall-template/nyx";
+    };
+
     # Home Manager
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager?main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -71,7 +77,6 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
 
     # Ever wanted nix error messages to be even more cryptic?
     # Try flake-utils today! (Devs I beg you please stop)
@@ -115,7 +120,7 @@
       url = "github:cachix/git-hooks.nix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-#        flake-utils.follows = "flake-utils";
+        #        flake-utils.follows = "flake-utils";
         flake-compat.follows = "flake-compat";
       };
     };
@@ -151,7 +156,6 @@
         flake-compat.follows = "flake-compat";
       };
     };
-
 
     # Personal package overlay
     nyxpkgs.url = "github:NotAShelf/nyxpkgs";
