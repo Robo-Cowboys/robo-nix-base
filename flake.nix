@@ -1,6 +1,5 @@
 {
-  # https://github.com/NotAShelf/nyx
-  description = "My vastly overengineered monorepo for everything NixOS";
+  description = "Robo Squad monorepo for everything NixOS";
 
   outputs = {flake-parts, ...} @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} ({withSystem, ...}: {
@@ -19,19 +18,19 @@
         inputs.treefmt-nix.flakeModule
 
         # parts of the flake
-        ./flake/apps # apps provided by the flake
-        ./flake/checks # checks that are performed on `nix flake check`
-        ./flake/lib # extended library on top of `nixpkgs.lib`
-        ./flake/modules # nixos and home-manager modules provided by this flake
-        ./flake/pkgs # packages exposed by the flake
-        ./flake/pre-commit # pre-commit hooks, performed before each commit inside the devShell
-        ./flake/templates # flake templates
+#        ./nyx/flake/apps # apps provided by the flake
+#        ./flake/checks # checks that are performed on `nix flake check`
+        ./nyx/flake/lib # extended library on top of `nixpkgs.lib`
+        ./nyx/flake/modules # nixos and home-manager modules provided by this flake
+#        ./flake/pkgs # packages exposed by the flake
+#        ./flake/pre-commit # pre-commit hooks, performed before each commit inside the devShell
+#        ./flake/templates # flake templates
 
-        ./flake/args.nix # args that are passed to the flake, moved away from the main file
-        ./flake/deployments.nix # deploy-rs configurations for active hosts
-        ./flake/fmt.nix # various formatter configurations for this flake
-        ./flake/iso-images.nix # local installation media
-        ./flake/shell.nix # devShells exposed by the flake
+        ./nyx/flake/args.nix # args that are passed to the flake, moved away from the main file
+#        ./flake/deployments.nix # deploy-rs configurations for active hosts
+        ./nyx/flake/fmt.nix # various formatter configurations for this flake
+        ./nyx/flake/iso-images.nix # local installation media
+        ./nyx/flake/shell.nix # devShells exposed by the flake
       ];
 
       flake = {
@@ -51,7 +50,6 @@
     # more versions with or without pinned branches can be added if deemed necessary
     # stable? never heard of her
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-unstable-small"; # moves faster, has less packages
 
     # sometimes nixpkgs breaks something I need, pin a working commit when that occurs
     # nixpkgs-pinned.url = "github:NixOS/nixpkgs/b610c60e23e0583cdc1997c54badfd32592d3d3e";
@@ -68,6 +66,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    #Shhhhhhh it's a secret.
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+
     # Ever wanted nix error messages to be even more cryptic?
     # Try flake-utils today! (Devs I beg you please stop)
     flake-utils = {
@@ -81,7 +86,7 @@
     # Nix wrapper for building and testing my system
     nh = {
       url = "github:viperML/nh";
-      inputs.nixpkgs.follows = "nixpkgs-small";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # multi-profile Nix-flake deploy
@@ -90,7 +95,7 @@
     # A tree-wide formatter
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs-small";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixfmt = {
@@ -101,7 +106,7 @@
     # Project shells
     devshell = {
       url = "github:numtide/devshell";
-      inputs.nixpkgs.follows = "nixpkgs-small";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # guess what this does
@@ -109,8 +114,8 @@
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
       inputs = {
-        nixpkgs.follows = "nixpkgs-small";
-        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+#        flake-utils.follows = "flake-utils";
         flake-compat.follows = "flake-compat";
       };
     };
@@ -119,7 +124,7 @@
     nixpak = {
       url = "github:nixpak/nixpak";
       inputs = {
-        nixpkgs.follows = "nixpkgs-small";
+        nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
       };
     };
@@ -147,106 +152,26 @@
       };
     };
 
-    # nix-index database
-    nix-index-db = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs-small";
-    };
-
-    atticd = {
-      url = "github:zhaofengli/attic";
-      inputs.nixpkgs.follows = "nixpkgs-small";
-    };
-
-    # Secrets management
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs-small";
-        home-manager.follows = "home-manager";
-        darwin.follows = "";
-      };
-    };
-
-    # Rust overlay
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs = {
-        nixpkgs.follows = "nixpkgs-small";
-        flake-utils.follows = "flake-utils";
-      };
-    };
-
-    # Nix Language server
-    nil = {
-      url = "github:oxalica/nil";
-      inputs = {
-        nixpkgs.follows = "nixpkgs-small";
-        rust-overlay.follows = "rust-overlay";
-      };
-    };
-
-    # neovim nightly packages for nix
-    neovim-nightly = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs-small";
-    };
 
     # Personal package overlay
     nyxpkgs.url = "github:NotAShelf/nyxpkgs";
 
-    # Personal neovim-flake
-    neovim-flake = {
-      url = "github:NotAShelf/nvf";
-      inputs = {
-        nixpkgs.follows = "nixpkgs-small";
-        nil.follows = "nil";
-        flake-utils.follows = "flake-utils";
-        flake-parts.follows = "flake-parts";
-      };
-    };
-
     # use my own wallpapers repository to provide various wallpapers as nix packages
     wallpkgs = {
-      url = "github:NotAShelf/wallpkgs";
-      inputs.nixpkgs.follows = "nixpkgs-small";
+      url = "github:use-the-fork/wallpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # anyrun program launcher
-    anyrun.url = "github:anyrun-org/anyrun";
-    anyrun-nixos-options = {
-      url = "github:n3oney/anyrun-nixos-options";
-      inputs = {
-        flake-parts.follows = "flake-parts";
-      };
-    };
-
-    # aylur's gtk shell (ags)
-    ags = {
-      url = "github:Aylur/ags";
+    #Handy for managing FS
+    disko = {
+      url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # spicetify for theming spotify
     spicetify = {
       url = "github:the-argus/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs-small";
-    };
-
-    # schizophrenic firefox configuration
-    schizofox = {
-      url = "github:schizofox/schizofox";
-      inputs = {
-        nixpkgs.follows = "nixpkgs-small";
-        flake-parts.follows = "flake-parts";
-        nixpak.follows = "nixpak";
-      };
-    };
-
-    # mailserver on nixos
-    simple-nixos-mailserver = {
-      url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
-      inputs.nixpkgs.follows = "nixpkgs-small";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Hyprland & Hyprland Contrib repos
@@ -282,15 +207,12 @@
     extra-substituters = [
       "https://nix-community.cachix.org"
       "https://hyprland.cachix.org"
-      "https://cache.privatevoid.net"
       "https://nyx.cachix.org"
     ];
 
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-      "cache.privatevoid.net:SErQ8bvNWANeAvtsOESUwVYr2VJynfuc9JRwlzTTkVg="
-      "notashelf.cachix.org-1:VTTBFNQWbfyLuRzgm2I7AWSDJdqAa11ytLXHBhrprZk="
       "nyx.cachix.org-1:xH6G0MO9PrpeGe7mHBtj1WbNzmnXr7jId2mCiq6hipE="
     ];
   };
