@@ -24,8 +24,7 @@
         "${inputs.nyx}/flake/modules" # nixos and home-manager modules provided by this flake
         "${inputs.nyx}/flake/pre-commit" # pre-commit hooks, performed before each commit inside the devShell
 
-        ./flake/keys.nix
-        "${inputs.nyx}/flake/args.nix" # args that are passed to the flake, moved away from the main file
+        ./flake/args.nix # args that are passed to the flake, moved away from the main file
         "${inputs.nyx}/flake/fmt.nix" # various formatter configurations for this flake
         "${inputs.nyx}/flake/iso-images.nix" # local installation media
         "${inputs.nyx}/flake/shell.nix" # devShells exposed by the flake
