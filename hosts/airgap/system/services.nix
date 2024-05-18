@@ -8,12 +8,10 @@
     autorandr.enable = true;
     xserver = {
       enable = true;
-      layout = "tr";
-      displayManager = {
-        autoLogin.enable = true;
-        autoLogin.user = "yubikey";
-        defaultSession = "none+i3";
-      };
+      xkb.layout = "us";
+      autoLogin.enable = true;
+      autoLogin.user = "yubikey";
+      defaultSession = "none+i3";
 
       desktopManager = {
         xterm.enable = false;

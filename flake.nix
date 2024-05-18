@@ -22,13 +22,10 @@
         #        ./flake/checks # checks that are performed on `nix flake check`
         "${inputs.nyx}/flake/lib" # extended library on top of `nixpkgs.lib`
         "${inputs.nyx}/flake/modules" # nixos and home-manager modules provided by this flake
-        #        ./flake/pkgs # packages exposed by the flake
         "${inputs.nyx}/flake/pre-commit" # pre-commit hooks, performed before each commit inside the devShell
-        #        ./flake/templates # flake templates
 
         ./flake/keys.nix
         "${inputs.nyx}/flake/args.nix" # args that are passed to the flake, moved away from the main file
-        #        ./flake/deployments.nix # deploy-rs configurations for active hosts
         "${inputs.nyx}/flake/fmt.nix" # various formatter configurations for this flake
         "${inputs.nyx}/flake/iso-images.nix" # local installation media
         "${inputs.nyx}/flake/shell.nix" # devShells exposed by the flake
@@ -61,6 +58,7 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
+    #Also by...
     nyx = {
       flake = false;
       url = "path:/home/sincore/source/nyx-snowfall-template/nyx";

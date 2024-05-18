@@ -63,78 +63,6 @@ in {
   #      ++ concatLists [shared homes];
   #    specialArgs = {inherit lib;};
   #  };
-  #
-  #  # HP Pavilion from 2016
-  #  # superseded by epimetheus
-  #  prometheus = mkNixosSystem {
-  #    inherit withSystem;
-  #    hostname = "prometheus";
-  #    system = "x86_64-linux";
-  #    modules =
-  #      [
-  #        ./prometheus
-  #        graphical
-  #        workstation
-  #        laptop
-  #      ]
-  #      ++ concatLists [shared homes];
-  #    specialArgs = {inherit lib;};
-  #  };
-  #
-  #  # Identical twin host for Prometheus
-  #  # provides full disk encryption
-  #  # with passkey/USB authentication
-  #  epimetheus = mkNixosSystem {
-  #    inherit withSystem;
-  #    hostname = "epimetheus";
-  #    system = "x86_64-linux";
-  #    modules =
-  #      [
-  #        ./epimetheus
-  #        graphical
-  #        workstation
-  #        laptop
-  #      ]
-  #      ++ concatLists [shared homes];
-  #    specialArgs = {inherit lib;};
-  #  };
-  #
-  #  # HP Pavilion laptop from 2023
-  #  # equipped a Ryzen 7 7730U
-  #  # usually acts as my portable workstation
-  #  # similar to epimetheus, has full disk
-  #  # encryption with ephemeral root using impermanence
-  #  hermes = mkNixosSystem {
-  #    inherit withSystem;
-  #    hostname = "hermes";
-  #    system = "x86_64-linux";
-  #    modules =
-  #      [
-  #        ./hermes
-  #        graphical
-  #        workstation
-  #        laptop
-  #      ]
-  #      ++ concatLists [shared homes];
-  #    specialArgs = {inherit lib;};
-  #  };
-  #
-  #  # Hetzner VPS to replace my previous server machines
-  #  # hosts some of my infrastructure
-  #  helios = mkNixosSystem {
-  #    inherit withSystem;
-  #    hostname = "helios";
-  #    system = "x86_64-linux";
-  #    modules =
-  #      [
-  #        ./helios
-  #        server
-  #        headless
-  #      ]
-  #      ++ concatLists [shared homes];
-  #    specialArgs = {inherit lib;};
-  #  };
-  #
   #  # Lenovo Ideapad from 2014..
   #  # Hybrid device
   #  # acts as a portable server and a "workstation"
@@ -154,26 +82,26 @@ in {
   #    specialArgs = {inherit lib;};
   #  };
   #
-  #  # Raspberry Pi 400
-  #  # My Pi400 homelab
-  #  # used mostly for testing networking/cloud services
-  #  atlas = mkNixosSystem {
-  #    inherit withSystem;
-  #    hostname = "atlas";
-  #    system = "aarch64-linux";
-  #    modules =
-  #      [
-  #        ./atlas
-  #        server
-  #        headless
-  #
-  #        # get raspberry pi 4 modules from nixos-hardware
-  #        hw.raspberry-pi-4
-  #      ]
-  #      ++ shared;
-  #    specialArgs = {inherit lib;};
-  #  };
-  #
+  # Raspberry Pi 400
+  # My Pi400 homelab
+  # used mostly for testing networking/cloud services
+  raspberry = mkNixosSystem {
+    inherit withSystem;
+    hostname = "raspberry";
+    system = "aarch64-linux";
+    modules =
+      [
+        ./raspberry
+        server
+        headless
+
+        # get raspberry pi 4 modules from nixos-hardware
+        hw.raspberry-pi-4
+      ]
+      ++ shared;
+    specialArgs = {inherit lib;};
+  };
+
   # Self-made live recovery environment that overrides or/and configures certain default programs
   # provides tools and fixes the keymaps for my keyboard
   installer = mkNixosIso {
@@ -200,52 +128,4 @@ in {
     ];
     specialArgs = {inherit lib;};
   };
-  #
-  #  # Pretty beefy VM running on my dedicated server
-  #  # is mostly for testing, but can run services at will
-  #  leto = mkNixosSystem {
-  #    inherit withSystem;
-  #    hostname = "leto";
-  #    system = "x86_64-linux";
-  #    modules =
-  #      [
-  #        ./leto
-  #        server
-  #        headless
-  #      ]
-  #      ++ concatLists [shared homes];
-  #    specialArgs = {inherit lib;};
-  #  };
-  #
-  #  # Twin virtual machine hosts
-  #  # Artemis is x86_64-linux
-  #  artemis = mkNixosSystem {
-  #    inherit withSystem;
-  #    hostname = "artemis";
-  #    system = "x86_64-linux";
-  #    modules =
-  #      [
-  #        ./artemis
-  #        server
-  #        headless
-  #      ]
-  #      ++ shared;
-  #    specialArgs = {inherit lib;};
-  #  };
-  #
-  #  # Apollon is also x86_64-linux
-  #  # but is for testing server-specific services
-  #  apollon = mkNixosSystem {
-  #    inherit withSystem;
-  #    hostname = "apollon";
-  #    system = "aarch64-linux";
-  #    modules =
-  #      [
-  #        ./apollon
-  #        server
-  #        headless
-  #      ]
-  #      ++ shared;
-  #    specialArgs = {inherit lib;};
-  #  };
 }
