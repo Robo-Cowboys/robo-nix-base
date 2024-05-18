@@ -12,6 +12,7 @@
   ## flake inputs ##
   hw = inputs.nixos-hardware.nixosModules; # hardware compat for pi4 and other quirky devices
   sops-nix = inputs.sops-nix.nixosModules.default; # secret encryption via age
+  disko = inputs.disko.nixosModules.disko; # disko for disk setup and easier volume mangment.
   hm = inputs.home-manager.nixosModules.home-manager; # home-manager nixos module
 
   # serializing the modulePath to a variable
@@ -35,53 +36,35 @@
   server = "${coreModules}/roles/server"; # for devices that are of the server type - provides online services
   laptop = "${coreModules}/roles/laptop"; # for devices that are of the laptop type - provides power optimizations
 
-  # home-manager #
-  #  homesDir = ../homes; # home-manager configurations for hosts that need home-manager
-  #  homes = [hm homesDir]; # combine hm flake input and the home module to be imported together
+  # home-manager
+  homesDir = ../homes; # home-manager configurations for hosts that need home-manager
+  homes = [hm homesDir]; # combine hm flake input and the home module to be imported together
 
   # a list of shared modules that ALL systems need
   shared = [
     common # the "sane" default shared across systems
     options # provide options for defined modules across the system
+    disko # TODO: Squad should this be on a per host or shared?
     sops-nix # age encryption for secrets
     profiles # profiles program overrides per-host
   ];
 in {
-  #  # My main desktop boasting a RX 6700XT and a Ryzen 5 3600x
-  #  # fully free from nvidia
-  #  # fuck nvidia - Linus "the linux" Torvalds
-  #  enyo = mkNixosSystem {
-  #    inherit withSystem;
-  #    hostname = "enyo";
-  #    system = "x86_64-linux";
-  #    modules =
-  #      [
-  #        ./enyo
-  #        graphical
-  #        workstation
-  #      ]
-  #      ++ concatLists [shared homes];
-  #    specialArgs = {inherit lib;};
-  #  };
-  #  # Lenovo Ideapad from 2014..
-  #  # Hybrid device
-  #  # acts as a portable server and a "workstation"
-  #  icarus = mkNixosSystem {
-  #    inherit withSystem;
-  #    hostname = "icarus";
-  #    system = "x86_64-linux";
-  #    modules =
-  #      [
-  #        ./icarus
-  #        graphical
-  #        workstation
-  #        laptop
-  #        server
-  #      ]
-  #      ++ concatLists [shared homes];
-  #    specialArgs = {inherit lib;};
-  #  };
-  #
+  # My Main Desktop
+  sushi = mkNixosSystem {
+    inherit withSystem;
+    hostname = "sushi";
+    system = "x86_64-linux";
+    modules =
+      [
+        ./sushi
+        graphical
+        workstation
+        laptop
+      ]
+      ++ concatLists [shared homes];
+    specialArgs = {inherit lib;};
+  };
+
   # Raspberry Pi 400
   # My Pi400 homelab
   # used mostly for testing networking/cloud services
