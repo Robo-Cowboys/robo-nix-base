@@ -44,7 +44,7 @@
   shared = [
     common # the "sane" default shared across systems
     options # provide options for defined modules across the system
-    disko # TODO: Squad should this be on a per host or shared?
+    disko # TODO: should this be on a per host or shared?
     sops-nix # age encryption for secrets
     profiles # profiles program overrides per-host
   ];

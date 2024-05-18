@@ -43,7 +43,7 @@
         };
       };
 
-      kdeglobals.source = "${config.my.style.qt.theme.package}" + "/share/color-schemes/CatppuccinMochaBlue.colors";
+      kdeglobals.source = "${config.modules.style.qt.theme.package}" + "/share/color-schemes/CatppuccinMochaBlue.colors";
     };
   };
 }
