@@ -45,8 +45,5 @@ nix build .#images.raspberry
 ```
 
 Ensure all configurations are correct before proceeding with the builds to avoid errors during deployment.
-```
-
-This version of the README is structured to be more user-friendly, with clearer instructions and a logical flow that guides the user through the setup and configuration process.
 
 ### 8. Profit! 💵
