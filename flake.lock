@@ -1031,8 +1031,8 @@
     "nyx": {
       "flake": false,
       "locked": {
-        "lastModified": 1715990938,
-        "narHash": "sha256-gbTODDeHXRPJpysfCYkHu+0nWzOLVuthUT7FddbunU4=",
+        "lastModified": 1715992707,
+        "narHash": "sha256-SSgdaVYTH/LletkRMJE3ritC095dNGF5dLuX5ABjRxg=",
         "path": "/home/sincore/source/nyx-snowfall-template/nyx",
         "type": "path"
       },
