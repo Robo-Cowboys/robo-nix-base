@@ -20,9 +20,11 @@ creation_rules:
 # 1. Generate a key for yourself
 run the following:
 mkdir -p ~/.config/sops/age
+Generate the user key
 nix-shell -p ssh-to-age --run "ssh-to-age -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt"
-
-# 2. Now you can get the Age Public key
+Generate the system key
+sudo nix-shell -p ssh-to-age --run "ssh-to-age -private-key -i /etc/ssh/ssh_host_ed25519_key >> /home/$USER/.config/sops/age/keys.txt"
+# 2. Now you can get the Age Public keys
 Run the following:
 age-keygen -y ~/.config/sops/age/keys.txt
 
@@ -38,13 +40,15 @@ Here is an example Yaml.
 keys:
   - &admin_alice 2504791468b153b8a3963cc97ba53d1919c5dfd4
   - &admin_bob age12zlz6lvcdk6eqaewfylg35w0syh58sm7gh53q5vvn7hd7c6nngyseftjxl
+  - &server_sushi age1cec9wu3fpf07xve6vg44h356vwea6n8v7rvw0jp94waw9up5a94sl0atz0
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
     - pgp:
       - *admin_alice
-      age:
+    - age:
       - *admin_bob
+      - *server_sushi
 ```
 # 4. Once you have a .sops file and a path set edit that secret by running the following:
 To create or edit a secret run from the root dir `nix-shell -p sops --run "sops secrets/default.yaml"`
