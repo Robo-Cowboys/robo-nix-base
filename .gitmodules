@@ -1,4 +1,4 @@
-[submodule "nyx"]
-	path = nyx
-	url = https://github.com/Spacebar-Cowboys/nyx.git
+[submodule "RoboNyx"]
+	path = RoboNyx
+	url = https://github.com/Spacebar-Cowboys/RoboNyx.git
 	branch = master
