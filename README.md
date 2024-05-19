@@ -1,6 +1,6 @@
 # 🤖 RoBo SqUaD Nix ❄️S Template 🤖
-Follow these steps to configure and use this Nix template:
-test
+Follow these steps to configure and use this Nix template: test
+
 ### 1. Clone this Repository
 Clone the repository to get started with the setup.
 
