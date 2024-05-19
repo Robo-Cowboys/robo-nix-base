@@ -23,7 +23,7 @@ in {
         _module.args = {
           pkgs = config.legacyPackages;
           #          pins = pinnedSources;
-          globals = globals;
+          inherit globals;
           keys = publicKeys;
         };
       }
@@ -41,7 +41,7 @@ in {
 
   flake = {
     #    pins = pinnedSources;
-    globals = globals;
+    inherit globals;
     keys = publicKeys;
   };
 }

@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: {
+{lib, ...}: {
   # mildly improves performance for the disk encryption
   boot.initrd.availableKernelModules = [
     "aesni_intel"

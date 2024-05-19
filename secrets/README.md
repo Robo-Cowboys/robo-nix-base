@@ -18,18 +18,22 @@ creation_rules:
 ```
 
 # 1. Generate a key for yourself
+
 run the following:
 mkdir -p ~/.config/sops/age
 nix-shell -p ssh-to-age --run "ssh-to-age -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt"
 
 # 2. Now you can get the Age Public key
+
 Run the following:
 age-keygen -y ~/.config/sops/age/keys.txt
 
 # 3. Now you can add your public key to your .sops.yaml
+
 Your age public key or GPG fingerprint can be written to your .sops.yaml in the root of your configuration directory or repository:
 
-Here is an example Yaml. 
+Here is an example Yaml.
+
 ```yaml
 # This example uses YAML anchors which allows reuse of multiple keys 
 # without having to repeat yourself.
@@ -46,7 +50,9 @@ creation_rules:
       age:
       - *admin_bob
 ```
+
 # 4. Once you have a .sops file and a path set edit that secret by running the following:
+
 To create or edit a secret run from the root dir `nix-shell -p sops --run "sops secrets/default.yaml"`
 
 this will open a editor let you set your seret and then encrypt it.
