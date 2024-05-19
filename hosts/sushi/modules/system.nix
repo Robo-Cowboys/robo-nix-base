@@ -51,6 +51,11 @@
       gui.enable = true;
       dev.enable = true;
 
+      git = {
+        userName = "use-the-fork";
+        userEmail = "sincore@gmail.com";
+      };
+
       google-chrome.enable = true;
       signal-desktop.enable = true;
       nordpass.enable = true;
