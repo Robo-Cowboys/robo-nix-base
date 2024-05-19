@@ -61,8 +61,8 @@
     #Also by...
     robo-nyx = {
       flake = false;
-      #      url = "github:Spacebar-Cowboys/RoboNyx";
-      url = "path:/home/sincore/source/RoboNyx-template/robo-nyx";
+      url = "github:Spacebar-Cowboys/RoboNyx";
+      #      url = "path:/home/sincore/source/RoboNyx-template/robo-nyx";
     };
 
     # Home Manager
