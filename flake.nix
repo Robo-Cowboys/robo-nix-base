@@ -19,9 +19,10 @@
 
         # parts of the flake
         #        ./nyx/flake/apps # apps provided by the flake
-        #        ./flake/checks # checks that are performed on `nix flake check`
+        "${inputs.nyx}/flake/checks" # checks that are performed on `nix flake check`
         "${inputs.nyx}/flake/lib" # extended library on top of `nixpkgs.lib`
         "${inputs.nyx}/flake/modules" # nixos and home-manager modules provided by this flake
+        "${inputs.nyx}/flake/pkgs" # packages exposed by the flake
         "${inputs.nyx}/flake/pre-commit" # pre-commit hooks, performed before each commit inside the devShell
 
         ./flake/args.nix # args that are passed to the flake, moved away from the main file
