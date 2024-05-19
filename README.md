@@ -16,7 +16,14 @@ url = "github:Spacebar-Cowboys/nyx";
 
 ### 3. Modify Global Settings and Keys
 In your local flake directory, edit `globals.nix` and `keys.nix` to match your main user and the keys you would like to use. Ensure the user and keys configuration aligns with your system requirements.
-
+```bash
+# Create System SSH keys for handshake
+ssh-keygen -A 
+```
+```bash
+# Create User SSH keys for handshake
+ssh-keygen -t rsa -b 4096
+```
 ### 4. Configure Hosts
 Review and modify the hosts configuration to suit your deployment needs. The default configuration includes a template for 'Sushi', which is my main workstation. Update or remove this to reflect your own setup.
 
