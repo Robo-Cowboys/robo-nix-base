@@ -23,7 +23,7 @@
         "${inputs.nyx}/flake/lib" # extended library on top of `nixpkgs.lib`
         "${inputs.nyx}/flake/modules" # nixos and home-manager modules provided by this flake
         "${inputs.nyx}/flake/pkgs" # packages exposed by the flake
-        #        "${inputs.nyx}/flake/pre-commit" # pre-commit hooks, performed before each commit inside the devShell
+        "${inputs.nyx}/flake/pre-commit" # pre-commit hooks, performed before each commit inside the devShell
 
         ./flake/args.nix # args that are passed to the flake, moved away from the main file
         "${inputs.nyx}/flake/fmt.nix" # various formatter configurations for this flake
