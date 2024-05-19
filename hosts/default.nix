@@ -17,7 +17,7 @@
 
   # serializing the modulePath to a variable
   # this is in case the modulePath changes depth (i.e modules becomes nixos/modules)
-  modulePath = "${inputs.nyx}/modules";
+  modulePath = "${inputs.robo-nyx}/modules";
 
   coreModules = "${modulePath}/nixos"; # the path where common modules reside
   #  extraModules = modulePath + /extra; # the path where extra modules reside

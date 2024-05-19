@@ -19,16 +19,16 @@
 
         # parts of the flake
         #        ./nyx/flake/apps # apps provided by the flake
-        "${inputs.nyx}/flake/checks" # checks that are performed on `nix flake check`
-        "${inputs.nyx}/flake/lib" # extended library on top of `nixpkgs.lib`
-        "${inputs.nyx}/flake/modules" # nixos and home-manager modules provided by this flake
-        "${inputs.nyx}/flake/pkgs" # packages exposed by the flake
-        "${inputs.nyx}/flake/pre-commit" # pre-commit hooks, performed before each commit inside the devShell
+        #        "${inputs.robo-nyx}/flake/checks" # checks that are performed on `nix flake check`
+        "${inputs.robo-nyx}/flake/lib" # extended library on top of `nixpkgs.lib`
+        "${inputs.robo-nyx}/flake/modules" # nixos and home-manager modules provided by this flake
+        "${inputs.robo-nyx}/flake/pkgs" # packages exposed by the flake
+        "${inputs.robo-nyx}/flake/pre-commit" # pre-commit hooks, performed before each commit inside the devShell
 
         ./flake/args.nix # args that are passed to the flake, moved away from the main file
-        "${inputs.nyx}/flake/fmt.nix" # various formatter configurations for this flake
-        "${inputs.nyx}/flake/iso-images.nix" # local installation media
-        "${inputs.nyx}/flake/shell.nix" # devShells exposed by the flake
+        "${inputs.robo-nyx}/flake/fmt.nix" # various formatter configurations for this flake
+        "${inputs.robo-nyx}/flake/iso-images.nix" # local installation media
+        "${inputs.robo-nyx}/flake/shell.nix" # devShells exposed by the flake
       ];
 
       flake = {
@@ -59,9 +59,10 @@
     };
 
     #Also by...
-    nyx = {
+    robo-nyx = {
       flake = false;
-      url = "path:/home/sincore/source/nyx-snowfall-template/nyx";
+      url = "https://github.com/Spacebar-Cowboys/RoboNyx";
+      #      url = "path:/home/sincore/source/nyx-snowfall-template/nyx";
     };
 
     # Home Manager
@@ -112,10 +113,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    just-flake = {
-      url = "github:juspay/just-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #Devshell conviance commands
+    just-flake.url = "github:juspay/just-flake";
 
     # guess what this does
     # come on, try
@@ -223,13 +222,11 @@
     extra-substituters = [
       "https://nix-community.cachix.org"
       "https://hyprland.cachix.org"
-      "https://nyx.cachix.org"
     ];
 
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-      "nyx.cachix.org-1:xH6G0MO9PrpeGe7mHBtj1WbNzmnXr7jId2mCiq6hipE="
     ];
   };
 }

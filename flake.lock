@@ -1039,19 +1039,6 @@
         "type": "github"
       }
     },
-    "nyx": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1716134780,
-        "narHash": "sha256-ei2EHOwEGbrkXMC7UF7lsvtN/Yf+zj4i+N938mG9duY=",
-        "path": "/home/sincore/source/nyx-snowfall-template/nyx",
-        "type": "path"
-      },
-      "original": {
-        "path": "/home/sincore/source/nyx-snowfall-template/nyx",
-        "type": "path"
-      }
-    },
     "nyxpkgs": {
       "inputs": {
         "flake-compat": "flake-compat_4",
@@ -1160,6 +1147,18 @@
         "type": "github"
       }
     },
+    "robo-nyx": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-D3miOl9DH1Ps9XRsyWAaZPcNmZCbXBxJlkAWFweIt+8=",
+        "type": "file",
+        "url": "https://github.com/Spacebar-Cowboys/RoboNyx"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/Spacebar-Cowboys/RoboNyx"
+      }
+    },
     "root": {
       "inputs": {
         "deploy-rs": "deploy-rs",
@@ -1184,9 +1183,9 @@
         "nixos-hardware": "nixos-hardware",
         "nixpak": "nixpak",
         "nixpkgs": "nixpkgs_4",
-        "nyx": "nyx",
         "nyxpkgs": "nyxpkgs",
         "pre-commit-hooks-nix": "pre-commit-hooks-nix_2",
+        "robo-nyx": "robo-nyx",
         "sops-nix": "sops-nix",
         "spicetify": "spicetify",
         "systems": "systems_5",

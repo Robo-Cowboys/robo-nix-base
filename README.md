@@ -39,7 +39,7 @@ Navigate to the home directory configurations and adjust them for your user. Ren
 Ensure that the default user configuration imports the global Home Manager settings from:
 
 ```nix
-"${inputs.nyx}/modules/home";
+"${inputs.robo-nyx}/modules/home";
 ```
 
 These settings are also influenced by `modules/options/`.
