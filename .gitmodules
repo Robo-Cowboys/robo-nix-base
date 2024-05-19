@@ -1,4 +1,3 @@
-[submodule "RoboNyx"]
-	path = RoboNyx
+[submodule "robo-nyx"]
+	path = robo-nyx
 	url = https://github.com/Spacebar-Cowboys/RoboNyx.git
-	branch = master
