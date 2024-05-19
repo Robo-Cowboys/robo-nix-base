@@ -2,55 +2,67 @@
 
 Follow these steps to configure and use this Nix template:
 
-### 1. Clone this Repository
+### 1. Clone the Repository
 
-Clone the repository to get started with the setup.
+Clone the repository to get started with the setup. Use it as a template.
 
-### 2. Update the Flake File
+### 2. Open a Console Window and Go to the Root of the Cloned Repo
 
-In `flake.nix`, update the `nyx` path to match the absolute path on your local system:
+Run:
 
-```nix
-url = "path:/home/yourusername/source/nyx-snowfall-template/nyx";
+```bash
+nix flake lock
 ```
 
-Alternatively, set it to use a GitHub repository if you do not want to have the main repo locally:
+then
 
-```nix
-url = "github:Spacebar-Cowboys/nyx";
+```bash
+direnv allow
 ```
 
-### 3. Modify Global Settings and Keys
+This should pull down all the needed files to enter a dev shell. You know it worked if you see `just` outputs.
 
-In your local flake directory, edit `globals.nix` and `keys.nix` to match your main user and the keys you would like to use. Ensure the user and keys configuration aligns with your system requirements.
+### 3. Update the Flake File
 
-### 4. Configure Hosts
+If you are developing locally and want to use the submodule, update `flake.nix` to match the absolute path on your local system:
 
-Review and modify the hosts configuration to suit your deployment needs. The default configuration includes a template for 'Sushi', which is my main workstation. Update or remove this to reflect your own setup.
+```nix
+url = "path:/home/sincore/source/RoboNyx-template/robo-nyx";
+```
 
-Pay close attention to the options set in the 'Sushi' configuration. Ensure you configure your users and the main user correctly, as many settings depend on these configurations.
+### 4. Modify Global Settings and Keys
 
-For additional options, refer to the `github:Spacebar-Cowboys/nyx` repository under `modules/options/`.
+Edit `flake/globals.nix` and `flake/keys.nix` in your local flake directory to match your main user and the keys you want to use. Ensure the user and keys configuration align with your system requirements.
 
-### 5. Adjust Home Manager Environments
+### 5. Configure Hosts
 
-Navigate to the home directory configurations and adjust them for your user. Rename the directory to match your user as it dictates the Home Manager environment.
+Review and modify the hosts configuration to suit your deployment needs. The default configuration includes a template for 'Sushi', which is my main workstation. Update or remove this to reflect your setup.
 
-Ensure that the default user configuration imports the global Home Manager settings from:
+Update the fs folder to match your machine's setup. Sushi is configured with Disko, BTRFS, and Luks. If you don't want to use Disko, comment out the Disko import and use your own settings.
+
+Pay close attention to the options in the 'Sushi' configuration. Ensure your users and main user are configured correctly, as many settings depend on these configurations.
+
+For additional options, refer to the `https://github.com/Spacebar-Cowboys/RoboNyx` repository under `modules/options/`.
+
+### 6. Adjust Home Manager Environments
+
+Adjust the home directory configurations for your user. Rename the directory to match your user as it dictates the Home Manager environment.
+
+Ensure the default user configuration imports the global Home Manager settings from:
 
 ```nix
 "${inputs.robo-nyx}/modules/home";
 ```
 
-These settings are also influenced by `modules/options/`.
+These settings are influenced by `modules/options/`.
 
-### 6. Update the SOPS Configuration
+### 7. Update the SOPS Configuration
 
 Modify the root `.sops.yaml` file to include your encryption keys. This configuration determines how SOPS will encrypt your keys. For more details, see the README in the `secrets` directory.
 
-### 7. Build and Deploy
+### 8. Build and Deploy
 
-To build an ISO, use one of the following commands depending on your needs:
+To build an ISO, use one of the following commands:
 
 ```bash
 nix build .#images.installer
@@ -58,6 +70,6 @@ nix build .#images.airgap
 nix build .#images.raspberry
 ```
 
-Ensure all configurations are correct before proceeding with the builds to avoid errors during deployment.
+Ensure all configurations are correct before proceeding to avoid errors during deployment.
 
-### 8. Profit! 💵
+### 9. Profit! 💵

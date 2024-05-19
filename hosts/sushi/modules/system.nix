@@ -59,7 +59,7 @@
       google-chrome.enable = true;
       signal-desktop.enable = true;
       nordpass.enable = true;
-      gimp.enable = true;
+      gimp.enable = false;
 
       default = {
         terminal = "kitty";

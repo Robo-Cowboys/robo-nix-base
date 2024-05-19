@@ -61,8 +61,8 @@
     #Also by...
     robo-nyx = {
       flake = false;
-      url = "github:Spacebar-Cowboys/RoboNyx";
-      #       url = "path:/home/sincore/source/RoboNyx-template/robo-nyx";
+      #      url = "github:Spacebar-Cowboys/RoboNyx";
+      url = "path:/home/sincore/source/RoboNyx-template/robo-nyx";
     };
 
     # Home Manager
@@ -180,9 +180,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # spicetify for theming spotify
-    spicetify = {
-      url = "github:the-argus/spicetify-nix";
+    # A collection of utilities to generate nixos images in other formats. With this tool, we can easily customize our USB image.
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
