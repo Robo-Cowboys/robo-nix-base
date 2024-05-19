@@ -19,7 +19,7 @@
 
         # parts of the flake
         #        ./nyx/flake/apps # apps provided by the flake
-        #        "${inputs.robo-nyx}/flake/checks" # checks that are performed on `nix flake check`
+        "${inputs.robo-nyx}/flake/checks" # checks that are performed on `nix flake check`
         "${inputs.robo-nyx}/flake/lib" # extended library on top of `nixpkgs.lib`
         "${inputs.robo-nyx}/flake/modules" # nixos and home-manager modules provided by this flake
         "${inputs.robo-nyx}/flake/pkgs" # packages exposed by the flake
@@ -62,7 +62,7 @@
     robo-nyx = {
       flake = false;
       url = "github:Spacebar-Cowboys/RoboNyx";
-      #      url = "path:/home/sincore/source/nyx-snowfall-template/nyx";
+      #       url = "path:/home/sincore/source/RoboNyx-template/robo-nyx";
     };
 
     # Home Manager
