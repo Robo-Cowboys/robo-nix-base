@@ -1150,13 +1150,17 @@
     "robo-nyx": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-D3miOl9DH1Ps9XRsyWAaZPcNmZCbXBxJlkAWFweIt+8=",
-        "type": "file",
-        "url": "https://github.com/Spacebar-Cowboys/RoboNyx"
+        "lastModified": 1716135216,
+        "narHash": "sha256-/KRl9HVQKOWHQ5i+3OmMlAGZtOjil9MHDMTawiVuvrA=",
+        "owner": "Spacebar-Cowboys",
+        "repo": "RoboNyx",
+        "rev": "d7ac7506d65d172479b10719fd940f3575946be7",
+        "type": "github"
       },
       "original": {
-        "type": "file",
-        "url": "https://github.com/Spacebar-Cowboys/RoboNyx"
+        "owner": "Spacebar-Cowboys",
+        "repo": "RoboNyx",
+        "type": "github"
       }
     },
     "root": {
