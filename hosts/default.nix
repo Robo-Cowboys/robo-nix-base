@@ -17,24 +17,23 @@
 
   # serializing the modulePath to a variable
   # this is in case the modulePath changes depth (i.e modules becomes nixos/modules)
-  modulePath = "${inputs.robo-nyx}/modules";
+  modulePath = ../modules;
 
-  coreModules = "${modulePath}/nixos"; # the path where common modules reside
-  #  extraModules = modulePath + /extra; # the path where extra modules reside
-  options = "${modulePath}/options"; # the module that provides the options for my system configuration
+  coreModules = modulePath + /core; # the path where common modules reside
+#  extraModules = modulePath + /extra; # the path where extra modules reside
+  options = modulePath + /options; # the module that provides the options for my system configuration
 
-  # common modules
-  # to be shared across all systems without exception
-  common = "${coreModules}/common"; # the self-proclaimed sane defaults for all my systems
-  profiles = "${coreModules}/profiles"; # force defaults based on selected profile
+  ## common modules ##
+  common = coreModules + /common; # the self-proclaimed sane defaults for all my systems
+  profiles = coreModules + /profiles; # force defaults based on selected profile
 
   # roles
-  iso = "${coreModules}/roles/iso"; # for providing a uniform ISO configuration for live systems - only the build setup
-  headless = "${coreModules}/roles/headless"; # for devices that are of the headless type - provides no GUI
-  graphical = "${coreModules}/roles/graphical"; # for devices that are of the graphical type - provides a GUI
-  workstation = "${coreModules}/roles/workstation"; # for devices that are of workstation type - any device that is for daily use
-  server = "${coreModules}/roles/server"; # for devices that are of the server type - provides online services
-  laptop = "${coreModules}/roles/laptop"; # for devices that are of the laptop type - provides power optimizations
+  iso = coreModules + /roles/iso; # for providing a uniform ISO configuration for live systems - only the build setup
+  headless = coreModules + /roles/headless; # for devices that are of the headless type - provides no GUI
+  graphical = coreModules + /roles/graphical; # for devices that are of the graphical type - provides a GUI
+  workstation = coreModules + /roles/workstation; # for devices that are of workstation type - any device that is for daily use
+  server = coreModules + /roles/server; # for devices that are of the server type - provides online services
+  laptop = coreModules + /roles/laptop; # for devices that are of the laptop type - provides power optimizations
 
   # home-manager
   homesDir = ../homes; # home-manager configurations for hosts that need home-manager
@@ -48,6 +47,8 @@
     sops-nix # age encryption for secrets
     profiles # profiles program overrides per-host
   ];
+
+
 in {
   # My Main Desktop
   sushi = mkNixosSystem {
