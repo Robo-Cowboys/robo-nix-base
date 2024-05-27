@@ -19,7 +19,7 @@ let
   workstations = attrValues {inherit (machines) suhsi;};
 in {
   inherit (utils) mkGlobal;
-  inherit (users) notashelf;
+  inherit (users) main;
   #      inherit (machines) helios enyo hermes icarus leto;
   inherit workstations;
 }
