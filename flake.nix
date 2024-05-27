@@ -1,41 +1,16 @@
 {
   description = "Robo Squad monorepo for everything NixOS";
 
-  outputs = {flake-parts, ...} @ inputs:
-    flake-parts.lib.mkFlake {inherit inputs;} ({withSystem, ...}: {
-      # systems for which the attributes of `perSystem` will be built
-      # and more if they can be supported...
-      #  - x86_64-linux: Desktops, laptops, servers
-      #  - aarch64-linux: ARM-based devices, PoC server and builders
-      systems = import inputs.systems;
+  outputs = inputs:
+    inputs.robo-nix-lib.mkRoboFlake {
+      # You must provide our flake inputs to Robo Nix Lib.
+      inherit inputs;
 
-      # import parts of the flake, which allows me to build the final flake
-      # from various parts constructed in a way that makes sense to me
-      # the most
-      imports = [
-        # parts and modules from inputs
-        inputs.flake-parts.flakeModules.easyOverlay
-        inputs.treefmt-nix.flakeModule
-
-        # parts of the flake
-        #        ./nyx/flake/apps # apps provided by the flake
-        "${inputs.robo-nyx}/flake/checks" # checks that are performed on `nix flake check`
-        "${inputs.robo-nyx}/flake/lib" # extended library on top of `nixpkgs.lib`
-        "${inputs.robo-nyx}/flake/modules" # nixos and home-manager modules provided by this flake
-        "${inputs.robo-nyx}/flake/pkgs" # packages exposed by the flake
-        "${inputs.robo-nyx}/flake/pre-commit" # pre-commit hooks, performed before each commit inside the devShell
-
-        ./flake/args.nix # args that are passed to the flake, moved away from the main file
-        "${inputs.robo-nyx}/flake/fmt.nix" # various formatter configurations for this flake
-        "${inputs.robo-nyx}/flake/iso-images.nix" # local installation media
-        "${inputs.robo-nyx}/flake/shell.nix" # devShells exposed by the flake
-      ];
-
-      flake = {
-        # entry-point for NixOS configurations
-        nixosConfigurations = import ./hosts {inherit inputs withSystem;};
-      };
-    });
+      # The `src` must be the root of the flake. See configuration
+      # in the next section for information on how you can move your
+      # Nix files to a separate directory.
+      src = ./.;
+    };
 
   inputs = {
     # global, so they can be `.follow`ed
@@ -63,6 +38,10 @@
       flake = false;
       url = "github:Spacebar-Cowboys/RoboNyx";
       #      url = "path:/home/sincore/source/RoboNyx-template/robo-nyx";
+    };
+
+    robo-nix-lib = {
+      url = "path:/home/sincore/source/robo-lib";
     };
 
     # Home Manager

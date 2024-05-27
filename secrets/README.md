@@ -9,12 +9,12 @@ keys:
   - &admin_alice 2504791468b153b8a3963cc97ba53d1919c5dfd4 #These are the keys that will be used to make each age secret.
   - &admin_bob age12zlz6lvcdk6eqaewfylg35w0syh58sm7gh53q5vvn7hd7c6nngyseftjxl
 creation_rules:
-  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$  #This is an example rule of where the secrets will be located and the file types that will be encrypted
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$ #This is an example rule of where the secrets will be located and the file types that will be encrypted
     key_groups: #These are the groups used to encrypt the serets.
-    - pgp:
-      - *admin_alice
-      age:
-      - *admin_bob
+      - pgp:
+          - *admin_alice
+        age:
+          - *admin_bob
 ```
 
 # 1. Generate a key for yourself
@@ -35,7 +35,7 @@ Your age public key or GPG fingerprint can be written to your .sops.yaml in the 
 Here is an example Yaml.
 
 ```yaml
-# This example uses YAML anchors which allows reuse of multiple keys 
+# This example uses YAML anchors which allows reuse of multiple keys
 # without having to repeat yourself.
 # Also see https://github.com/Mic92/dotfiles/blob/master/nixos/.sops.yaml
 # for a more complex example.
@@ -45,10 +45,10 @@ keys:
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
-    - pgp:
-      - *admin_alice
-      age:
-      - *admin_bob
+      - pgp:
+          - *admin_alice
+        age:
+          - *admin_bob
 ```
 
 # 4. Once you have a .sops file and a path set edit that secret by running the following:

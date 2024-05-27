@@ -20,7 +20,7 @@
   modulePath = ../modules;
 
   coreModules = modulePath + /core; # the path where common modules reside
-#  extraModules = modulePath + /extra; # the path where extra modules reside
+  #  extraModules = modulePath + /extra; # the path where extra modules reside
   options = modulePath + /options; # the module that provides the options for my system configuration
 
   ## common modules ##
@@ -47,8 +47,6 @@
     sops-nix # age encryption for secrets
     profiles # profiles program overrides per-host
   ];
-
-
 in {
   # My Main Desktop
   sushi = mkNixosSystem {
