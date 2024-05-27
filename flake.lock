@@ -279,6 +279,24 @@
         "type": "github"
       }
     },
+    "flake-parts_6": {
+      "inputs": {
+        "nixpkgs-lib": "nixpkgs-lib_2"
+      },
+      "locked": {
+        "lastModified": 1715865404,
+        "narHash": "sha256-/GJvTdTpuDjNn84j82cU6bXztE0MSkdnTWClUCRub78=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "8dc45382d5206bd292f9c2768b8058a8fd8311d9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems_2"
@@ -987,6 +1005,18 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/50eb7ecf4cd0a5756d7275c8ba36790e5bd53e33.tar.gz"
       }
     },
+    "nixpkgs-lib_2": {
+      "locked": {
+        "lastModified": 1714640452,
+        "narHash": "sha256-QBx10+k6JWz6u7VsohfSw8g8hjdBZEf8CFzXH1/1Z94=",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/50eb7ecf4cd0a5756d7275c8ba36790e5bd53e33.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/50eb7ecf4cd0a5756d7275c8ba36790e5bd53e33.tar.gz"
+      }
+    },
     "nixpkgs-regression": {
       "locked": {
         "lastModified": 1643052045,
@@ -1133,6 +1163,22 @@
     },
     "nixpkgs_7": {
       "locked": {
+        "lastModified": 1716509168,
+        "narHash": "sha256-4zSIhSRRIoEBwjbPm3YiGtbd8HDWzFxJjw5DYSDy1n8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "bfb7a882678e518398ce9a31a881538679f6f092",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_8": {
+      "locked": {
         "lastModified": 1712963716,
         "narHash": "sha256-WKm9CvgCldeIVvRz87iOMi8CFVB1apJlkUT4GGvA0iM=",
         "owner": "NixOS",
@@ -1265,29 +1311,35 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1716850278,
-        "narHash": "sha256-HaDcWRWUcyTKSmVpCnW5rRjYE0mdImnPRV93wCRxFus=",
-        "path": "/home/sincore/source/robo-lib",
-        "type": "path"
-      },
-      "original": {
-        "path": "/home/sincore/source/robo-lib",
-        "type": "path"
-      }
-    },
-    "robo-nyx": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1716502498,
-        "narHash": "sha256-FHgj7SvOkztjxGEt5wMLFCwmQoBcFElTjgBNgvlQrW8=",
-        "owner": "Spacebar-Cowboys",
-        "repo": "RoboNyx",
-        "rev": "564dc1d661fe89fc0a69b3e32393116de3baec0a",
+        "lastModified": 1716850704,
+        "narHash": "sha256-bk1XtdplhmVNeTqDsMuPhSEROrMRUtfuJJVKFVjeYU0=",
+        "owner": "Robo-Cowboys",
+        "repo": "lib",
+        "rev": "c91df51a883882d08565a75f03fd1733730359d1",
         "type": "github"
       },
       "original": {
-        "owner": "Spacebar-Cowboys",
-        "repo": "RoboNyx",
+        "owner": "Robo-Cowboys",
+        "repo": "lib",
+        "type": "github"
+      }
+    },
+    "robo-nix-modules": {
+      "inputs": {
+        "flake-parts": "flake-parts_6",
+        "nixpkgs": "nixpkgs_7"
+      },
+      "locked": {
+        "lastModified": 1716852511,
+        "narHash": "sha256-f7ojINM62Hnd/AthMk6zPwibGSk59T7uAqatJ8H3NL0=",
+        "owner": "Robo-Cowboys",
+        "repo": "modules",
+        "rev": "d0336cfa5c539e961e9020abbc0dbd57e628c02a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Robo-Cowboys",
+        "repo": "modules",
         "type": "github"
       }
     },
@@ -1319,7 +1371,7 @@
         "nyxpkgs": "nyxpkgs",
         "pre-commit-hooks-nix": "pre-commit-hooks-nix_2",
         "robo-nix-lib": "robo-nix-lib",
-        "robo-nyx": "robo-nyx",
+        "robo-nix-modules": "robo-nix-modules",
         "sops-nix": "sops-nix",
         "systems": "systems_6",
         "treefmt-nix": "treefmt-nix_2",
@@ -1593,7 +1645,7 @@
       "inputs": {
         "hyprland-protocols": "hyprland-protocols_2",
         "hyprlang": "hyprlang_2",
-        "nixpkgs": "nixpkgs_7",
+        "nixpkgs": "nixpkgs_8",
         "systems": "systems_8"
       },
       "locked": {

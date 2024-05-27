@@ -34,14 +34,14 @@
     };
 
     #Also by...
-    robo-nyx = {
-      flake = false;
-      url = "github:Spacebar-Cowboys/RoboNyx";
+    robo-nix-modules = {
+      url = "github:Robo-Cowboys/modules";
       #      url = "path:/home/sincore/source/RoboNyx-template/robo-nyx";
     };
 
     robo-nix-lib = {
-      url = "path:/home/sincore/source/robo-lib";
+      url = "github:Robo-Cowboys/lib";
+      #      url = "path:/home/sincore/source/robo-lib";
     };
 
     # Home Manager

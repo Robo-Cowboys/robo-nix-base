@@ -4,37 +4,43 @@ Follow these steps to configure and use this Nix template:
 
 ### 1. Clone the Repository
 
-Clone the repository to get started with the setup. Use it as a template.
+Clone the repository to get started with the setup. You can either use it as a template or create a fork.
+
+Typically, you will want to clone it to a location where you keep your `dot` files, usually `~/.config/dots`.
 
 ### 2. Open a Console Window and Go to the Root of the Cloned Repo
 
-Run:
-
-```bash
-nix flake lock
-```
-
-then
+Then run:
 
 ```bash
 direnv allow
 ```
 
-This should pull down all the needed files to enter a dev shell. You know it worked if you see `just` outputs.
+This will pull down all the needed files to enter a dev shell. You know it worked if you see `just` outputs.
 
-### 3. Update the Flake File
+### 3. Modify Your Keys
 
-If you are developing locally and want to use the submodule, update `flake.nix` to match the absolute path on your local system:
+Open your `keys/default.nix` in your favorite editor and modify the following:
 
-```nix
-url = "path:/home/sincore/source/RoboNyx-template/robo-nyx";
+Update the `users -> main` key to match your public key. This will be in your `~/.ssh/id_ed25519.pub` file. You can run the following command to quickly get this:
+
+```bash
+cat ~/.ssh/id_ed25519.pub
 ```
 
-### 4. Modify Global Settings and Keys
+You should also add the keys for each of your machines in the `machines` section. The reference to `sushi` is a placeholder and should be replaced with your keys.
 
-Edit `flake/globals.nix` and `flake/keys.nix` in your local flake directory to match your main user and the keys you want to use. Ensure the user and keys configuration align with your system requirements.
+Once you have completed your edits to `keys/default.nix`, save the file.
 
-### 5. Configure Hosts
+### 4. Configure Hosts
+
+Navigate to your `hosts` directory. Within it, you will see four folders: airgap, installer, raspberry, and sushi.
+
+Each of these folders represents a different NixOS system that can be built using this flake.
+
+`sushi` will be the template you can use to create your own.
+
+Now open the `hosts/default.nix` file. In this file, you will see all the modules and options defined at the top, followed by each system as described above defined as an output.
 
 Review and modify the hosts configuration to suit your deployment needs. The default configuration includes a template for 'Sushi', which is my main workstation. Update or remove this to reflect your setup.
 
@@ -42,25 +48,19 @@ Update the fs folder to match your machine's setup. Sushi is configured with Dis
 
 Pay close attention to the options in the 'Sushi' configuration. Ensure your users and main user are configured correctly, as many settings depend on these configurations.
 
-For additional options, refer to the `https://github.com/Spacebar-Cowboys/RoboNyx` repository under `modules/options/`.
+These settings are influenced by `modules/options/`.
 
-### 6. Adjust Home Manager Environments
+### 5. Adjust Home Manager Environments
 
 Adjust the home directory configurations for your user. Rename the directory to match your user as it dictates the Home Manager environment.
 
-Ensure the default user configuration imports the global Home Manager settings from:
-
-```nix
-"${inputs.robo-nyx}/modules/home";
-```
-
 These settings are influenced by `modules/options/`.
 
-### 7. Update the SOPS Configuration
+### 6. Update the SOPS Configuration
 
 Modify the root `.sops.yaml` file to include your encryption keys. This configuration determines how SOPS will encrypt your keys. For more details, see the README in the `secrets` directory.
 
-### 8. Build and Deploy
+### 7. Build and Deploy
 
 To build an ISO, use one of the following commands:
 
@@ -72,4 +72,4 @@ nix build .#images.raspberry
 
 Ensure all configurations are correct before proceeding to avoid errors during deployment.
 
-### 9. Profit! 💵
+### 8. Profit! 💵

@@ -14,7 +14,8 @@ let
     # hosts
     suhsi = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB8XojSEerAwKwXUPIZASZ5sXPPT7v/26ONQcH9zIFK+";
   };
-  #     aliases
+
+  # aliases - Update the below to group your workstations or servers so that these public keys are used across all of them.
   #      servers = attrValues {inherit (machines) helios icarus leto;};
   workstations = attrValues {inherit (machines) suhsi;};
 in {
