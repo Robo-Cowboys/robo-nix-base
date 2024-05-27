@@ -22,13 +22,5 @@
       # disable the usage of nixpkgs aliases in the configuration
       allowAliases = true;
     };
-
-    overlays = [
-      #TODO: Yuck.. Must be a better way to do this.
-      (import ./../../../../../packages {
-        inherit inputs';
-        inherit (pkgs) system;
-      })
-    ];
   };
 }
