@@ -1265,8 +1265,8 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1716849415,
-        "narHash": "sha256-dlkTpAhrFLS41DPc+WW3Mlw30R/YRg1EKckiAkKiLgM=",
+        "lastModified": 1716850278,
+        "narHash": "sha256-HaDcWRWUcyTKSmVpCnW5rRjYE0mdImnPRV93wCRxFus=",
         "path": "/home/sincore/source/robo-lib",
         "type": "path"
       },

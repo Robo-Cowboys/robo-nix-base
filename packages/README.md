@@ -7,7 +7,6 @@ The `orca-slicer` package is a template for you to use as a reference point.
 To add a new custom package, follow these steps:
 
 1. Create a new directory for your package in this folder.
-2. Create a `package.nix` file inside that directory.
-3. Create your package as you would any other package.
-4. You can now reference that package anywhere in your configs by referencing `self.packages.{your-package-name}`.
-
+1. Create a `package.nix` file inside that directory.
+1. Create your package as you would any other package.
+1. You can now reference that package anywhere in your configs by referencing `self.packages.{your-package-name}`.

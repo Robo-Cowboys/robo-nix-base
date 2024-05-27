@@ -4,8 +4,6 @@
   ...
 }: let
   inherit (lib) mkDefault;
-
-  sys = osConfig.modules.system;
 in {
   imports = [
     # imported home-manager modules
