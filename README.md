@@ -32,6 +32,11 @@ You should also add the keys for each of your machines in the `machines` section
 
 Once you have completed your edits to `keys/default.nix`, save the file.
 
+### 4. Configure your user
+Open `modules/options/system/default.nix` and change the user from `sincore` to your main username. 
+
+the line that says `default = ["sincore"];` (around line 77)
+
 ### 4. Configure Hosts
 
 Navigate to your `hosts` directory. Within it, you will see four folders: airgap, installer, raspberry, and sushi.

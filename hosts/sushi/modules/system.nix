@@ -2,8 +2,7 @@
   modules.system = {
     mainUser = "sincore";
     fs = ["btrfs" "ext4" "vfat" "ntfs"];
-    impermanence.root.enable = true;
-    autoLogin = true;
+    autoLogin = false;
 
     boot = {
       loader = "systemd-boot";

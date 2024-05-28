@@ -16,9 +16,6 @@
     # global, so they can be `.follow`ed
     systems.url = "github:nix-systems/default-linux";
 
-    # Feature-rich and convenient fork of the Nix package manager
-    nix-super.url = "github:privatevoid-net/nix-super";
-
     # We build against nixos unstable, because stable takes way too long to get things into
     # more versions with or without pinned branches can be added if deemed necessary
     # stable? never heard of her
