@@ -1,11 +1,9 @@
 {
   lib,
-  self,
   config,
   pkgs,
   ...
 }: let
-  inherit (self) globals;
   inherit (lib) mkIf mkMerge optional;
   inherit (config.services) tailscale;
   cfg = config.modules.system.networking.tailscale;
@@ -31,7 +29,7 @@ in {
       (mkIf cfg.autoConnect {
         sops.secrets."${key}" = {
           sopsFile =
-            globals.flakeRoot + "/secrets/tailscale/default.yaml";
+            lib.fs.get-file "secrets/tailscale/default.yaml";
           owner = config.users.users.root.name;
           reloadUnits = ["tailscale-autoconnect.service"];
         };
