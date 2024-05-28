@@ -74,7 +74,7 @@ in {
 
     users = mkOption {
       type = with types; listOf str;
-      default = [globals.mainUser];
+      default = ["sincore"];
       description = "A list of home-manager users on the system.";
     };
 
