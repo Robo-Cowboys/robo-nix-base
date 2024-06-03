@@ -19,7 +19,7 @@
   # this is in case the modulePath changes depth (i.e modules becomes nixos/modules)
   modulePath = ../modules;
 
-  coreModules = modulePath; # the path where common modules reside
+  coreModules = modulePath + /core; # the path where common modules reside
   #  extraModules = modulePath + /extra; # the path where extra modules reside
   options = modulePath + /options; # the module that provides the options for my system configuration
 
@@ -48,7 +48,8 @@
     profiles # profiles program overrides per-host
   ];
 in {
-  # My Main Desktop
+  # 🍣 Sushi - My Main machine
+  # Just like sushi, your main workstation is essential, versatile, and always in demand.
   sushi = mkNixosSystem {
     inherit withSystem;
     hostname = "sushi";
@@ -58,6 +59,22 @@ in {
         ./sushi
         graphical
         workstation
+        laptop
+      ]
+      ++ concatLists [shared homes];
+    specialArgs = {inherit lib;};
+  };
+
+  # 🍜 Ramen - DNS Server
+  # Ramen is reliable and serves as a staple; similarly, your DNS server is foundational for network operations.
+  ramen = mkNixosSystem {
+    inherit withSystem;
+    hostname = "ramen";
+    system = "x86_64-linux";
+    modules =
+      [
+        ./ramen
+        server
         laptop
       ]
       ++ concatLists [shared homes];

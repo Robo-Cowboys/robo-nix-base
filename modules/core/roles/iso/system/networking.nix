@@ -1,5 +1,5 @@
 {
-  self',
+  self,
   lib,
   config,
   ...
@@ -18,7 +18,7 @@ in {
     systemd.services.sshd.wantedBy = mkForce ["multi-user.target"];
     users.users.root.openssh.authorizedKeys.keys = [
       #add in the main user SSH key
-      self'.keys.main
+      self.keys.main
     ];
   };
 }

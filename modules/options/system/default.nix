@@ -5,7 +5,6 @@
   ...
 }: let
   inherit (lib) optionals mkEnableOption mkOption types;
-  inherit (self) globals;
 in {
   imports = [
     # configuration options for nixos activation scripts

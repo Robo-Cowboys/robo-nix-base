@@ -1,8 +1,4 @@
-{
-  osConfig,
-  lib,
-  ...
-}: let
+{lib, ...}: let
   inherit (lib) mkDefault;
 in {
   imports = [

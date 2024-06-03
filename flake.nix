@@ -37,8 +37,8 @@
     };
 
     robo-nix-lib = {
-      url = "github:Robo-Cowboys/lib";
-      #      url = "path:/home/sincore/source/robo-lib";
+      #      url = "github:Robo-Cowboys/lib";
+      url = "path:/home/sincore/source/robo-lib";
     };
 
     # Home Manager
@@ -69,8 +69,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # multi-profile Nix-flake deploy
-    deploy-rs.url = "github:serokell/deploy-rs";
+    #Remote Deployments made easy.
+    nixos-anywhere.url = "github:nix-community/nixos-anywhere";
 
     # A tree-wide formatter
     treefmt-nix = {
