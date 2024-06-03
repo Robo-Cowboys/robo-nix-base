@@ -20,6 +20,7 @@
         curl
         wget
         pciutils
+        devenv
         lshw
         man-pages
         rsync
