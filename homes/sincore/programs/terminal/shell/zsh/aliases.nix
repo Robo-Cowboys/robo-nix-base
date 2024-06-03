@@ -5,52 +5,6 @@
 }: let
   inherit (lib) getExe;
   inherit (pkgs) eza bat ripgrep dust procs;
-
-  p = pkgs.writeShellScript "p" ''
-    local sail_cmd="php"
-    local test_cmd="phpunit"
-
-    if [ -f vendor/bin/sail ]; then
-      sail_cmd="./vendor/bin/sail php"
-    fi
-
-    if [ -f vendor/bin/pest ]; then
-      test_cmd="pest"
-    fi
-
-    eval "$sail_cmd ./vendor/bin/$test_cmd"
-  '';
-
-  pf = pkgs.writeShellScript "pf" ''
-    local sail_cmd="php"
-    local test_cmd="phpunit"
-
-    if [ -f vendor/bin/sail ]; then
-      sail_cmd="./vendor/bin/sail php"
-    fi
-
-    if [ -f vendor/bin/pest ]; then
-      test_cmd="pest"
-    fi
-
-    eval "$sail_cmd ./vendor/bin/$test_cmd --filter \"$@\""
-  '';
-
-  sup = pkgs.writeShellScript "sup" ''
-    if [ -f vendor/bin/sail ]; then
-      ./vendor/bin/sail up -d
-    else
-      docker-compose up -d
-    fi
-  '';
-
-  sdo = pkgs.writeShellScript "sdo" ''
-    if [ -f vendor/bin/sail ]; then
-      ./vendor/bin/sail down
-    else
-      docker-compose down
-    fi
-  '';
 in {
   programs.zsh.shellAliases = {
     # make sudo use aliases
@@ -69,10 +23,6 @@ in {
 
     # Laravel / Docker Specific
     sail = "sh $([ -f sail ] && echo sail || echo vendor/bin/sail)";
-    sup = "${sup}";
-    sdo = "${sdo}";
-    p = "${p}";
-    pf = "${pf}";
     a = "sail artisan";
     nrd = "sail npm run dev";
 

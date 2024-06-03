@@ -1,8 +1,4 @@
 {
-  # required by impermanence
-  fileSystems."/persistent".neededForBoot = true;
-  #  fileSystems."/var/log".neededForBoot = true;
-
   disko.devices = {
     disk.main = {
       type = "disk";
@@ -56,16 +52,6 @@
                     mountpoint = "/nix";
                     mountOptions = ["defaults" "compress=zstd:1" "ssd" "noatime" "nodiratime"];
                   };
-
-                  "@persistent" = {
-                    mountpoint = "/persistent";
-                    mountOptions = ["defaults" "compress=zstd:1" "ssd" "noatime" "nodiratime"];
-                  };
-
-                  #                  "@log" = {
-                  #                    mountpoint = "/var/log";
-                  #                    mountOptions = ["defaults" "compress=zstd:1" "ssd" "noatime" "nodiratime"];
-                  #                  };
 
                   "@swap" = {
                     mountpoint = "/.swap";

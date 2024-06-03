@@ -6,9 +6,7 @@
   ...
 }: let
   inherit (self) inputs;
-  inherit (lib.trivial) pipe;
-  inherit (lib.types) isType;
-  inherit (lib.attrsets) mapAttrsToList optionalAttrs filterAttrs mapAttrs;
+  inherit (lib.attrsets) mapAttrsToList mapAttrs;
 in {
   imports = [
     ./documentation.nix # nixos documentation
@@ -40,12 +38,12 @@ in {
   };
 
   nix = let
-     mappedRegistry = mapAttrs (_: v: {flake = v;}) inputs;
-#    mappedRegistry = pipe inputs [
-#      (filterAttrs (_: isType "flake"))
-#      (mapAttrs (_: flake: {inherit flake;}))
-#      (x: x // {nixpkgs.flake = inputs.nixpkgs;})
-#    ];
+    mappedRegistry = mapAttrs (_: v: {flake = v;}) inputs;
+    #    mappedRegistry = pipe inputs [
+    #      (filterAttrs (_: isType "flake"))
+    #      (mapAttrs (_: flake: {inherit flake;}))
+    #      (x: x // {nixpkgs.flake = inputs.nixpkgs;})
+    #    ];
   in {
     package = pkgs.nixVersions.git;
 

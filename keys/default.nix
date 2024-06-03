@@ -7,12 +7,12 @@ let
 
   users = {
     # users
-    main = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIABG2T60uEoq4qTZtAZfSBPtlqWs2b4V4O+EptQ6S/ru";
+    main = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOSE69dmDxQ/UJ8k+8CL3lzc/PyJXXO/2aCcYQOjkTW+ sincore@sushi";
   };
 
   machines = {
     # hosts
-    suhsi = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB8XojSEerAwKwXUPIZASZ5sXPPT7v/26ONQcH9zIFK+";
+    suhsi = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIITeldysWRlM603quJfPY/d6Vy23Bkp+w81zwJGO8F4w root@sushi";
   };
 
   # aliases - Update the below to group your workstations or servers so that these public keys are used across all of them.

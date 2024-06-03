@@ -33,6 +33,7 @@ in {
         lshw
         rsync
         nixos-install-tools
+        networkmanager
       ];
 
       etc = {
