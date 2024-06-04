@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   lib,
   ...
 }: let
@@ -12,9 +11,9 @@ in {
     # fingerprint login
     # doesn't work because thanks drivers
     services.fprintd = {
-      enable = false;
-      tod.enable = true;
-      tod.driver = pkgs.libfprint-2-tod1-goodix;
+      enable = true;
+      #      tod.enable = true;
+      #      tod.driver = pkgs.libfprint-2-tod1-goodix;
     };
 
     security.pam.services = {
