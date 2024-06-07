@@ -49,23 +49,21 @@
   ];
 in {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  # My Main Desktop
+  bebop = mkNixosSystem {
+    inherit withSystem;
+    hostname = "bebop";
+    system = "x86_64-linux";
+    modules =
+      [
+        ./bebop
+        graphical
+        workstation
+        laptop
+      ]
+      ++ concatLists [shared homes];
+    specialArgs = {inherit lib;};
+  };
 
   # 🍣 Sushi - My Main machine
   # Just like sushi, your main workstation is essential, versatile, and always in demand.
