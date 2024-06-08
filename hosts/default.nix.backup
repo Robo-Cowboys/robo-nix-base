@@ -65,39 +65,6 @@ in {
     specialArgs = {inherit lib;};
   };
 
-  # 🍣 Sushi - My Main machine
-  # Just like sushi, your main workstation is essential, versatile, and always in demand.
-  sushi = mkNixosSystem {
-    inherit withSystem;
-    hostname = "sushi";
-    system = "x86_64-linux";
-    modules =
-      [
-        ./sushi
-        graphical
-        workstation
-        laptop
-      ]
-      ++ concatLists [shared homes];
-    specialArgs = {inherit lib;};
-  };
-
-  # 🍜 Ramen - DNS Server
-  # Ramen is reliable and serves as a staple; similarly, your DNS server is foundational for network operations.
-  ramen = mkNixosSystem {
-    inherit withSystem;
-    hostname = "ramen";
-    system = "x86_64-linux";
-    modules =
-      [
-        ./ramen
-        server
-        laptop
-      ]
-      ++ concatLists [shared homes];
-    specialArgs = {inherit lib;};
-  };
-
   # Raspberry Pi 400
   # My Pi400 homelab
   # used mostly for testing networking/cloud services
