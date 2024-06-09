@@ -10,10 +10,16 @@
 in {
   config = mkIf prg.dev.enable {
     home.packages = with pkgs; [
-      jetbrains.datagrip
-      jetbrains.phpstorm
+      #jetbrains.datagrip
+      #jetbrains.phpstorm
       jetbrains.idea-ultimate
-      jetbrains.pycharm-professional
+      #jetbrains.pycharm-professional
+      kitty
+      #btop
+      #htop
+      #meld
+      #rofi
+      #swaync
     ];
   };
 }

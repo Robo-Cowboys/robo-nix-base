@@ -1,7 +1,9 @@
 {
   modules.system = {
-    mainUser = "sincore";
-    fs = ["btrfs" "ext4" "vfat" "ntfs"];
+    mainUser = "nerd";
+    #    fs = ["btrfs" "ext4" "vfat" "ntfs"];
+    fs = ["ext4" "vfat" "ntfs"];
+    impermanence.root.enable = false;
     autoLogin = false;
 
     boot = {
@@ -9,29 +11,29 @@
       enableKernelTweaks = true;
       initrd.enableTweaks = true;
       loadRecommendedModules = true;
-      tmpOnTmpfs = true;
+      tmpOnTmpfs = false;
     };
 
     video.enable = true;
     sound.enable = true;
     bluetooth.enable = false;
-    printing.enable = true;
-    printing."3d".enable = true;
+    printing.enable = false;
+    printing."3d".enable = false;
 
     networking = {
       tailscale = {
-        enable = true;
-        autoConnect = true;
+        enable = false;
+        autoConnect = false;
       };
     };
 
     security = {
-      fprint.enable = true;
+      fprint.enable = false;
     };
 
     virtualization = {
-      enable = true;
-      docker.enable = true;
+      enable = false;
+      docker.enable = false;
       qemu.enable = false;
       podman.enable = false;
     };
@@ -51,13 +53,13 @@
       dev.enable = true;
 
       git = {
-        userName = "use-the-fork";
-        userEmail = "sincore@gmail.com";
+        userName = "peoplenamed";
+        userEmail = "peoplenamed@gmail.com";
       };
 
       google-chrome.enable = true;
       signal-desktop.enable = true;
-      nordpass.enable = true;
+      nordpass.enable = false;
       gimp.enable = false;
 
       default = {

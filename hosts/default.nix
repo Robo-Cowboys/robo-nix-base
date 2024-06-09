@@ -50,13 +50,13 @@
 in {
   # 🍣 Sushi - My Main machine
   # Just like sushi, your main workstation is essential, versatile, and always in demand.
-  sushi = mkNixosSystem {
+  bebop = mkNixosSystem {
     inherit withSystem;
     hostname = "sushi";
     system = "x86_64-linux";
     modules =
       [
-        ./sushi
+        ./bebop
         graphical
         workstation
         laptop

@@ -1,5 +1,5 @@
 {
   imports = [
-    ./disko.nix
+    ./basic.nix
   ];
 }

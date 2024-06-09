@@ -7,7 +7,7 @@ in {
     #    self.homeManagerModules.gtklock # a home-manager module for gtklock, gotta upstream it eventually
 
     # home impermanence
-    ./impermanence
+    #./impermanence
 
     # home package sets
     ./packages
@@ -26,8 +26,8 @@ in {
   config = {
     home = {
       # Driven by the main user of the system
-      username = "sincore";
-      homeDirectory = "/home/sincore";
+      username = "nerd";
+      homeDirectory = "/home/nerd";
       extraOutputsToInstall = ["doc" "devdoc"];
 
       # <https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion>
@@ -48,6 +48,7 @@ in {
     programs.home-manager.enable = true;
 
     # reload system units when changing configs
-    systemd.user.startServices = mkDefault "sd-switch"; # or "legacy" if "sd-switch" breaks again
+    #systemd.user.startServices = mkDefault "sd-switch"; # or "legacy" if "sd-switch" breaks again
+    systemd.user.startServices = mkDefault "legacy"; # or "legacy" if "sd-switch" breaks again
   };
 }

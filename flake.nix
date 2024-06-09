@@ -37,8 +37,8 @@
     };
 
     robo-nix-lib = {
-      #      url = "github:Robo-Cowboys/lib";
-      url = "path:/home/sincore/source/robo-lib";
+      url = "github:Robo-Cowboys/lib";
+      # url = "path:/home/sincore/source/robo-lib";
     };
 
     # Home Manager

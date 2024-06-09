@@ -37,8 +37,8 @@
       theme = {
         name = "Catppuccin-Mocha-Dark";
         package = pkgs.catppuccin-kde.override {
-          flavour = ["mocha"];
-          accents = ["blue"];
+          flavour = ["latte"];
+          accents = ["mauve"];
           winDecStyles = ["modern"];
         };
       };
