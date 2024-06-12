@@ -52,7 +52,7 @@ in {
   # Just like sushi, your main workstation is essential, versatile, and always in demand.
   bebop = mkNixosSystem {
     inherit withSystem;
-    hostname = "sushi";
+    hostname = "bebop";
     system = "x86_64-linux";
     modules =
       [

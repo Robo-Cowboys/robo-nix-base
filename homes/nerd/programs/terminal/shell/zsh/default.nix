@@ -44,7 +44,7 @@
         screenshots = "$HOME/Media/Pictures/Screenshots";
         notes = "$HOME/Cloud/Notes";
         source = "$HOME/source";
-        dots = "$HOME/.config/dots";
+        dots = "$HOME/.config/dots/RoboNyx-base";
       };
 
       # Disable /etc/{zshrc,zprofile} that contains the "sane-default" setup out of the box
