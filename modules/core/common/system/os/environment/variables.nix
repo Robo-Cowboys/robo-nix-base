@@ -1,10 +1,8 @@
-{config, ...}: let
-  sys = config.modules.system;
-in {
+{config, ...}: {
   # variables that I want to set globally on all systems
   config = {
     environment.variables = {
-      FLAKE = sys.flakeDirectory;
+      #FLAKE = sys.flakeDirectory;
       SSH_AUTH_SOCK = "/run/user/\${UID}/keyring/ssh";
 
       # editors
