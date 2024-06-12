@@ -48,8 +48,6 @@
     profiles # profiles program overrides per-host
   ];
 in {
-  # 🍣 Sushi - My Main machine
-  # Just like sushi, your main workstation is essential, versatile, and always in demand.
   bebop = mkNixosSystem {
     inherit withSystem;
     hostname = "bebop";
