@@ -18,14 +18,14 @@ in {
       pavucontrol # pulseaudio volume controle (GUI)
       playerctl # controller for media players
 
-      (symlinkJoin {
-        # wrap obsidian with pandoc for the pandoc plugin dependency
-        name = "Obsidian";
-        paths = with pkgs; [
-          obsidian
-          pandoc # pandoc plugin uses pandoc to render alternative text formats
-        ];
-      })
+      # (symlinkJoin {
+      #   # wrap obsidian with pandoc for the pandoc plugin dependency
+      #   name = "Obsidian";
+      #   paths = with pkgs; [
+      #     obsidian
+      #     pandoc # pandoc plugin uses pandoc to render alternative text formats
+      #   ];
+      # })
     ];
   };
 }
