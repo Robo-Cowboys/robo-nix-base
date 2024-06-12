@@ -5,8 +5,8 @@
   makeDesktopItem,
 }: let
   pname = "orca-slicer";
-  version = "2.0.0";
-  sha256 = "PcCsqF1RKdSrbdp1jCF0n5Mu30EniaBEuJNw3XdPhO4="; # Taken from release's checksums.txt.gpg
+  version = "2.1.0-beta";
+  sha256 = "7e4a5dfa38a8b5ddcfe41c9cc84fc63b98cdd9e36513bb36b01f2c6e30238236"; # Taken from release's checksums.txt.gpg
   name = "${pname}-${version}";
 
   src = fetchurl {
