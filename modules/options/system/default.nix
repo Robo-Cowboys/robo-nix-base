@@ -50,7 +50,7 @@ in {
   options.modules.system = {
     flakeDirectory = mkOption {
       type = with types; str;
-      default = "/home/${config.modules.system.mainUser}/.config/dots/RoboNyx-base/";
+      default = "/home/${config.modules.system.mainUser}/.config/dots/";
       description = ''
         The directory used for the Nix flakes of the system.
 
