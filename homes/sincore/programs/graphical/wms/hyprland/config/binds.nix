@@ -41,16 +41,14 @@ in {
         "$MOD,M,exec,hyprctl keyword $kw $(($(hyprctl getoption $kw -j | jaq -r '.int') ^ 1))" # toggle no_gaps_when_only
 
         # Resize window control
-        "$MODCTRL,left,resizeactive, -80 0"
-        "$MODCTRL,right,resizeactive, 80 0"
-        "$MODCTRL,up,resizeactive, 0 -80"
-        "$MODCTRL,down,resizeactive, 0 80"
+        "$MOD ALT,left,resizeactive, -80 0"
+        "$MOD ALT,right,resizeactive, 80 0"
+        "$MOD ALT,up,resizeactive, 0 -80"
+        "$MOD ALT,down,resizeactive, 0 80"
 
-        # Move window control
-        "$MOD ALT,left,moveactive, -80 0"
-        "$MOD ALT,right,moveactive, 80 0"
-        "$MOD ALT,up,moveactive, 0 -80"
-        "$MOD ALT,down,moveactive, 0 80"
+        # Move workspace controls.
+        "$MOD CTRL,right,workspace,+1"
+        "$MOD CTRL,left,workspace,-1"
 
         # workspace controls
         "$MODSHIFT,right,movetoworkspace,+1" # move focused window to the next ws

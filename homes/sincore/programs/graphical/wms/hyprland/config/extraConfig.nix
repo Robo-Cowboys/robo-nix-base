@@ -20,8 +20,8 @@
 
       # workspace binds
       # binds * (asterisk) to special workspace
-      bind = $MOD, KP_Multiply, togglespecialworkspace
-      bind = $MODSHIFT, KP_Multiply, movetoworkspace, special
+      bind = $MOD, code:49, togglespecialworkspace
+      bind = $MODSHIFT, code:49, movetoworkspace, special
 
       # and mod + [shift +] {1..10} to [move to] ws {1..10}
       ${
