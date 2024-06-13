@@ -19,7 +19,7 @@
         owner = "SoftFever";
         repo = "OrcaSlicer";
         rev = "main";
-        sha256 = lib.fakeSha256;
+        sha256 = "aa692b815ea01e84d93c88a8467c6ebdfa5615c9";
       };
 
       nativeBuildInputs = [pkgs.cmake pkgs.git pkgs.strawberry-perl];
