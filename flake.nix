@@ -92,6 +92,9 @@
     #Devshell conviance commands
     just-flake.url = "github:juspay/just-flake";
 
+    devenv.url = "path:/home/sincore/source/devenv";
+    #    devenv.url = "github:use-the-fork/devenv/main";
+
     # guess what this does
     # come on, try
     git-hooks = {

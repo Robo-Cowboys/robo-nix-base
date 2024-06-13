@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  inputs',
   ...
 }: {
   config = {
@@ -20,7 +21,7 @@
         curl
         wget
         pciutils
-        devenv
+        inputs'.devenv.packages.default
         lshw
         man-pages
         rsync
