@@ -8,7 +8,7 @@ in {
       enable = true;
       clean.enable = true;
       clean.extraArgs = "--keep-since 7d --keep 5";
-      flake = "/home/${sys.mainUser}/.config/dots";
+      flake = "/home/${sys.mainUser}/.config/dots/";
     };
   };
 }

@@ -1,57 +1,40 @@
 {
-  lib,
-  appimageTools,
-  fetchurl,
-  makeDesktopItem,
-}: let
-  pname = "orca-slicer";
-  version = "2.1.0-beta";
-  sha256 = "7e4a5dfa38a8b5ddcfe41c9cc84fc63b98cdd9e36513bb36b01f2c6e30238236"; # Taken from release's checksums.txt.gpg
-  name = "${pname}-${version}";
+  description = "OrcaSlicer flake";
 
-  src = fetchurl {
-    url = "https://github.com/SoftFever/OrcaSlicer/releases/download/v${version}/OrcaSlicer_Linux_V${version}.AppImage";
-    inherit sha256;
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs";
   };
 
-  appimageContents = appimageTools.extractType2 {
-    inherit name src;
-  };
-
-  desktopItem = makeDesktopItem {
-    name = pname;
-    desktopName = pname;
-    comment = "G-code generator for 3d printers";
-    exec = pname;
-    icon = "OrcaSlicer";
-    mimeTypes = ["model/stl" "application/vnd.ms-3mfdocument" "application/prs.wavefront-obj" "application/x-amf"];
-    categories = ["Utility"];
-  };
-in
-  appimageTools.wrapType2 rec {
-    inherit name src;
-
-    #    multiArch = false; # no p32bit needed
-    extraPkgs = pkgs:
-      (appimageTools.defaultFhsEnvArgs.multiPkgs pkgs)
-      ++ (with pkgs; [
-        webkitgtk
-        glib
-        glib-networking
-      ]);
-
-    extraInstallCommands = ''
-      mv $out/bin/{${name},${pname}}
-
-      mkdir -p $out/share
-      cp -rt $out/share ${desktopItem}/share/applications ${appimageContents}/usr/share/icons
-      chmod -R +w $out/share
-    '';
-
-    meta = with lib; {
-      description = "G-code generator for 3d printers";
-      platforms = ["x86_64-linux"];
-      maintainers = [];
-      mainProgram = "OrcaSlicer";
+  outputs = {nixpkgs}: let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {
+      inherit system;
     };
-  }
+  in {
+    packages.${system} = pkgs.stdenv.mkDerivation {
+      pname = "orca-slicer";
+      version = "1.0.0";
+
+      src = pkgs.fetchFromGitHub {
+        owner = "SoftFever";
+        repo = "OrcaSlicer";
+        rev = "main";
+        sha256 = lib.fakeSha256;
+      };
+
+      nativeBuildInputs = [pkgs.cmake pkgs.git pkgs.strawberry-perl];
+
+      buildInputs = [pkgs.gcc];
+
+      buildPhase = ''
+        mkdir -p build
+        cd build
+        cmake .. -DCMAKE_BUILD_TYPE=Release
+      '';
+
+      installPhase = ''
+        make install
+      '';
+    };
+  };
+}
