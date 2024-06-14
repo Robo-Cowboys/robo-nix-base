@@ -1,12 +1,17 @@
 {
-  pkgs,
   inputs',
-  lib,
   osConfig,
+  config,
+  pkgs,
+  lib,
   ...
 }: let
-  inherit (lib) mkIf;
-  inherit (import ./packages {inherit inputs' pkgs;}) grimblast dbus-hyprland-env hyprpicker wrapper hyprshot;
+  inherit (lib.modules) mkIf;
+  inherit (osConfig) modules;
+
+  inherit (import ./packages {inherit inputs' pkgs;}) grimblast hyprshot dbus-hyprland-env;
+
+  env = modules.usrEnv;
 in {
   imports = [
     ./config/binds.nix
@@ -20,19 +25,18 @@ in {
     ./config/windowrules.nix
   ];
 
-  config = mkIf (lib.isWayland osConfig) {
+  config = mkIf env.desktops.hyprland.enable {
     home.packages = [
-      inputs'.hyprland.packages.hyprland
       hyprshot
       grimblast
-      hyprpicker
+      #      inputs'.hyprpicker.packages
       dbus-hyprland-env
     ];
 
     wayland.windowManager.hyprland = {
       enable = true;
+      package = env.desktops.hyprland.package;
       xwayland.enable = true;
-      package = wrapper;
       systemd = {
         enable = true;
         variables = ["--all"];

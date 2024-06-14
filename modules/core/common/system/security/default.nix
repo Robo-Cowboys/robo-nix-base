@@ -16,7 +16,7 @@
     #    ./memalloc.nix # memory allocator hardening
     ./pam.nix # pam configuration
     ./pki.nix # pki certificate bundles
-    #    ./polkit.nix # polkit configuration
+    ./polkit.nix # polkit configuration
     #    ./selinux.nix # selinux support + kernel patches
     ./sudo.nix # sudo rules and configuration
     #    ./virtualization.nix # hypervisor hardening

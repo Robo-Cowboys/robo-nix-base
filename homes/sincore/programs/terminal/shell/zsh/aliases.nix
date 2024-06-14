@@ -21,11 +21,6 @@ in {
     shell = "nix shell";
     build = "nix build $@ --builders \"\"";
 
-    # Laravel / Docker Specific
-    sail = "sh $([ -f sail ] && echo sail || echo vendor/bin/sail)";
-    a = "sail artisan";
-    nrd = "sail npm run dev";
-
     # Nixos
     ns = "nix-shell --run zsh";
     nix-shell = "nix-shell --run zsh";

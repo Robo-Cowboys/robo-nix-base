@@ -1,13 +1,30 @@
 {
-  lib,
+  inputs',
   config,
+  lib,
   ...
 }: let
-  inherit (lib) mkIf;
+  inherit (lib.modules) mkIf;
+
+  sys = config.modules.system;
+  env = config.modules.usrEnv;
+
+  hyprlandPkg = env.desktops.hyprland.package;
 in {
-  config = mkIf (config.modules.usrEnv.desktop == "Hyprland") {
-    # Window manager
-    programs.hyprland.enable = true;
-    security.pam.services.swaylock = {};
+  # disables Nixpkgs Hyprland module to avoid conflicts
+  disabledModules = ["programs/hyprland.nix"];
+
+  config = mkIf (sys.video.enable && (env.desktop == "Hyprland" && lib.isWayland config)) {
+    services.displayManager.sessionPackages = [hyprlandPkg];
+
+    xdg.portal = {
+      enable = true;
+      configPackages = [hyprlandPkg];
+      extraPortals = [
+        (inputs'.xdg-portal-hyprland.packages.xdg-desktop-portal-hyprland.override {
+          hyprland = hyprlandPkg;
+        })
+      ];
+    };
   };
 }

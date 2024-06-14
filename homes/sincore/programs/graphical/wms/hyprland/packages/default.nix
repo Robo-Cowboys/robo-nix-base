@@ -5,11 +5,12 @@
 }: let
   packages = {
     inherit (inputs'.hyprland-contrib.packages) grimblast;
-    inherit (pkgs) hyprpicker;
+    inherit (inputs'.hyprpicker.packages) hyprpicker;
 
+    wrapper = pkgs.callPackage ./wrapper {inherit (inputs') hyprland;};
     hyprshot = pkgs.callPackage ./hyprshot.nix {};
-    wrapper = pkgs.callPackage ./wrapper/wrapper.nix {inherit (inputs') hyprland;};
     dbus-hyprland-env = pkgs.callPackage ./dbus-hyprland-env.nix {};
+    propaganda = pkgs.callPackage ./propaganda.nix {};
   };
 in
   packages
