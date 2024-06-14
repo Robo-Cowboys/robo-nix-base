@@ -63,6 +63,14 @@
     # Repo for hardware-specific NixOS modules
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
+    ndg = {
+      url = "github:feel-co/ndg";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
     # Nix wrapper for building and testing my system
     nh = {
       url = "github:viperML/nh";
@@ -92,8 +100,8 @@
     #Devshell conviance commands
     just-flake.url = "github:juspay/just-flake";
 
-    devenv.url = "path:/home/sincore/source/devenv";
-    #    devenv.url = "github:use-the-fork/devenv/main";
+    #    devenv.url = "path:/home/sincore/source/devenv";
+    devenv.url = "github:cachix/devenv";
 
     # guess what this does
     # come on, try
@@ -170,8 +178,12 @@
     # overriding the nixpkgs input - as the resulting hash would
     # mismatch if packages are builst against different versions
     # of the same depended packagaes
+
+    #git+https://github.com/hyprwm/Hyprland?ref=v0.41.1&submodules=1
     hyprland = {
-      url = "github:hyprwm/Hyprland/v0.39.1";
+      type = "git";
+      url = "https://github.com/hyprwm/Hyprland?v0.41.1";
+      submodules = true;
       inputs.nixpkgs.follows = "nixpkgs";
     };
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
