@@ -26,8 +26,8 @@ in {
   config = {
     home = {
       # Driven by the main user of the system
-      username = "sincore";
-      homeDirectory = "/home/sincore";
+      username = "nerd";
+      homeDirectory = "/home/nerd";
       extraOutputsToInstall = ["doc" "devdoc"];
 
       # <https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion>

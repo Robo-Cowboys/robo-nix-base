@@ -33,12 +33,10 @@
     #Also by...
     robo-nix-modules = {
       url = "github:Robo-Cowboys/modules";
-      #      url = "path:/home/sincore/source/RoboNyx-template/robo-nyx";
     };
 
     robo-nix-lib = {
-      #      url = "github:Robo-Cowboys/lib";
-      url = "path:/home/sincore/source/robo-lib";
+      url = "github:Robo-Cowboys/lib";
     };
 
     # Home Manager
@@ -100,7 +98,6 @@
     #Devshell conviance commands
     just-flake.url = "github:juspay/just-flake";
 
-    #    devenv.url = "path:/home/sincore/source/devenv";
     devenv.url = "github:cachix/devenv";
 
     # guess what this does

@@ -73,7 +73,7 @@ in {
 
     users = mkOption {
       type = with types; listOf str;
-      default = ["sincore"];
+      default = ["nerd"];
       description = "A list of home-manager users on the system.";
     };
 

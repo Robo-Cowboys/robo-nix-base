@@ -48,33 +48,15 @@
     profiles # profiles program overrides per-host
   ];
 in {
-  # 🍣 Sushi - My Main machine
-  # Just like sushi, your main workstation is essential, versatile, and always in demand.
-  sushi = mkNixosSystem {
+  bebop = mkNixosSystem {
     inherit withSystem;
-    hostname = "sushi";
+    hostname = "bebop";
     system = "x86_64-linux";
     modules =
       [
-        ./sushi
+        ./bebop
         graphical
         workstation
-        laptop
-      ]
-      ++ concatLists [shared homes];
-    specialArgs = {inherit lib;};
-  };
-
-  # 🍜 Ramen - DNS Server
-  # Ramen is reliable and serves as a staple; similarly, your DNS server is foundational for network operations.
-  ramen = mkNixosSystem {
-    inherit withSystem;
-    hostname = "ramen";
-    system = "x86_64-linux";
-    modules =
-      [
-        ./ramen
-        server
         laptop
       ]
       ++ concatLists [shared homes];

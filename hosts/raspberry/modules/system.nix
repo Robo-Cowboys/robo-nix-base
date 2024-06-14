@@ -1,7 +1,7 @@
 {
   config.modules.system = {
-    mainUser = "sincore";
-    users = ["sincore"];
+    mainUser = "nerd";
+    users = ["nerd"];
     fs = ["ext4" "vfat" "ntfs" "exfat"];
     autoLogin = false;
 

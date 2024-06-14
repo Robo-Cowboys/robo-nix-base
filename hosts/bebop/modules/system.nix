@@ -1,8 +1,8 @@
 {
   modules.system = {
-    mainUser = "sincore";
+    mainUser = "nerd";
     fs = ["btrfs" "ext4" "vfat" "ntfs"];
-    autoLogin = true;
+    autoLogin = false;
 
     boot = {
       loader = "systemd-boot";
@@ -13,14 +13,20 @@
     };
 
     video.enable = true;
-    sound.enable = false;
+    sound.enable = true;
     bluetooth.enable = false;
+    printing.enable = true;
+    printing."3d".enable = true;
 
     networking = {
       tailscale = {
         enable = true;
         autoConnect = true;
       };
+    };
+
+    security = {
+      fprint.enable = true;
     };
 
     virtualization = {
@@ -30,8 +36,28 @@
       podman.enable = false;
     };
 
+    services = {
+      flatpak = {
+        enable = false;
+        packages = [
+          "flathub:app/com.nordpass.NordPass//stable"
+        ];
+      };
+    };
+
     programs = {
       cli.enable = true;
+      gui.enable = true;
+      dev.enable = true;
+
+      git = {
+        userName = "peoplenamed";
+        userEmail = "peoplenamed@gmail.com";
+      };
+
+      google-chrome.enable = true;
+      signal-desktop.enable = true;
+      gimp.enable = true;
 
       default = {
         terminal = "kitty";

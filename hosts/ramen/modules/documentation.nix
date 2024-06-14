@@ -1,3 +1,0 @@
-{
-  #  modules.documentation.enable = true;
-}
