@@ -14,7 +14,6 @@ in {
       #jetbrains.phpstorm
 #      jetbrains.idea-ultimate
       #jetbrains.pycharm-professional
-      sublime4
       sublime3
       kitty
       #btop
