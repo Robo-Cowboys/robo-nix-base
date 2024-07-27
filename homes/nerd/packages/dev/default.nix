@@ -10,7 +10,7 @@
 in {
   config = mkIf prg.dev.enable {
     home.packages = with pkgs; [
-      sublime3
+#      sublime3
       kitty
       #btop
       #htop
