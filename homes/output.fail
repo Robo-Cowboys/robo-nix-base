@@ -1,0 +1,85 @@
+[32m>[39m Building NixOS configuration
+[?25lUsing saved setting for 'extra-substituters = https://nix-community.cachix.org https://hyprland.cachix.org' from ~/.local/share/nix/trusted-settings.json.
+Using saved setting for 'extra-trusted-public-keys = nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=' from ~/.local/share/nix/trusted-settings.json.
+[1m⏱ 0s[0m[1G[2K[1m⏱ 0s[0m[1G[2K[1m⏱ 0s[0m[1G[2K[1m⏱ 0s[0m[1G[2K[1m⏱ 0s[0m[1G[2K[1m⏱ 0s[0m[1G[2K[1m⏱ 0s[0m[1G[2K[1m⏱ 0s[0m[1G[2K[1m⏱ 0s[0m[1G[2K[1m⏱ 0s[0m[1G[2K[1m⏱ 0s[0m[1G[2K[1m⏱ 0s[0m[1G[2K[1m⏱ 0s[0m[1G[2K[1m⏱ 0s[0m[1G[2K[1m⏱ 0s[0m[1G[2K[1m⏱ 0s[0m[1G[2K[1m⏱ 1s[0m[1G[2K[1m⏱ 1s[0m[1G[2K[1m⏱ 1s[0m[1G[2K[1m⏱ 1s[0m[1G[2K[1m⏱ 1s[0m[1G[2K[1m⏱ 1s[0m[1G[2K[1m⏱ 1s[0m[1G[2K[1m⏱ 1s[0m[1G[2K[1m⏱ 1s[0m[1G[2K[1m⏱ 1s[0m[1G[2K[1m⏱ 1s[0m[1G[2K[1m⏱ 1s[0m[1G[2K[1m⏱ 1s[0m[1G[2K[1m⏱ 1s[0m[1G[2K[1m⏱ 1s[0m[1G[2K[1m⏱ 1s[0m[1G[2K[1m⏱ 2s[0m[1G[2K[1m⏱ 2s[0m[1G[2K[1m⏱ 2s[0m[1G[2K[1m⏱ 2s[0m[1G[2K[1m⏱ 2s[0m[1G[2K[31;1merror:[0m
+       … while calling the '[35;1mhead[0m' builtin
+         [34;1mat [35;1m/nix/store/dydg48djlykksz8cxq0xjplyxpa9pvf4-source/lib/attrsets.nix:1575:11[0m:
+         1574|         || pred here (elemAt values 1) (head values) then
+         1575|           head values
+             |           [31;1m^[0m
+         1576|         else
+
+       … while evaluating the attribute '[35;1mvalue[0m'
+         [34;1mat [35;1m/nix/store/dydg48djlykksz8cxq0xjplyxpa9pvf4-source/lib/modules.nix:809:9[0m:
+          808|     in warnDeprecation opt //
+          809|       { value = builtins.addErrorContext "while evaluating the option `${showOption loc}':" value;
+             |         [31;1m^[0m
+          810|         inherit (res.defsFinal') highestPrio;
+
+       … while evaluating the option `system.build.toplevel':
+
+       … while evaluating definitions from `/nix/store/dydg48djlykksz8cxq0xjplyxpa9pvf4-source/nixos/modules/system/activation/top-level.nix':
+
+       [35;1m(stack trace truncated; use '--show-trace' to show the full, detailed trace)[0m
+
+       [31;1merror:[0m
+       Failed assertions:
+       - The ‘fileSystems’ option does not specify your root file system.
+┏━[1;31m 1 Errors: [0m
+┃ [31;1merror:[0m
+┃        … while calling the '[35;1mhead[0m' builtin
+┃          [34;1mat [35;1m/nix/store/dydg48djlykksz8cxq0xjplyxpa9pvf4-source/lib/attrsets.nix:1575:11[0m:
+┃          1574|         || pred here (elemAt values 1) (head values) then
+┃          1575|           head values
+┃              |           [31;1m^[0m
+┃          1576|         else
+┃ 
+┃        … while evaluating the attribute '[35;1mvalue[0m'
+┃          [34;1mat [35;1m/nix/store/dydg48djlykksz8cxq0xjplyxpa9pvf4-source/lib/modules.nix:809:9[0m:
+┃           808|     in warnDeprecation opt //
+┃           809|       { value = builtins.addErrorContext "while evaluating the option `${showOption loc}':" value;
+┃              |         [31;1m^[0m
+┃           810|         inherit (res.defsFinal') highestPrio;
+┃ 
+┃        … while evaluating the option `system.build.toplevel':
+┃ 
+┃        … while evaluating definitions from `/nix/store/dydg48djlykksz8cxq0xjplyxpa9pvf4-source/nixos/modules/system/activation/top-level.nix':
+┃ 
+┃        [35;1m(stack trace truncated; use '--show-trace' to show the full, detailed trace)[0m
+┃ 
+┃        [31;1merror:[0m
+┃        Failed assertions:
+┃        - The ‘fileSystems’ option does not specify your root file system.[0m
+┣━━━     
+┗━ ∑ [1m⏱ 2s[0m[2K[1F[2K[1F[2K[1F[2K[1F[2K[1F[2K[1F[2K[1F[2K[1F[2K[1F[2K[1F[2K[1F[2K[1F[2K[1F[2K[1F[2K[1F[2K[1F[2K[1F[2K[1F[2K[1F[2K[1F[2K[1F[2K[1F[2K[1F[2K[1F[2K[1F[2K[1F[2K┏━[1;31m 1 Errors: [0m
+┃ [31;1merror:[0m
+┃        … while calling the '[35;1mhead[0m' builtin
+┃          [34;1mat [35;1m/nix/store/dydg48djlykksz8cxq0xjplyxpa9pvf4-source/lib/attrsets.nix:1575:11[0m:
+┃          1574|         || pred here (elemAt values 1) (head values) then
+┃          1575|           head values
+┃              |           [31;1m^[0m
+┃          1576|         else
+┃ 
+┃        … while evaluating the attribute '[35;1mvalue[0m'
+┃          [34;1mat [35;1m/nix/store/dydg48djlykksz8cxq0xjplyxpa9pvf4-source/lib/modules.nix:809:9[0m:
+┃           808|     in warnDeprecation opt //
+┃           809|       { value = builtins.addErrorContext "while evaluating the option `${showOption loc}':" value;
+┃              |         [31;1m^[0m
+┃           810|         inherit (res.defsFinal') highestPrio;
+┃ 
+┃        … while evaluating the option `system.build.toplevel':
+┃ 
+┃        … while evaluating definitions from `/nix/store/dydg48djlykksz8cxq0xjplyxpa9pvf4-source/nixos/modules/system/activation/top-level.nix':
+┃ 
+┃        [35;1m(stack trace truncated; use '--show-trace' to show the full, detailed trace)[0m
+┃ 
+┃        [31;1merror:[0m
+┃        Failed assertions:
+┃        - The ‘fileSystems’ option does not specify your root file system.[0m
+┣━━━                                                            
+┗━ ∑ [1m[31m⚠ Exited with 1 errors reported by nix at 00:39:34 after 2s[0m[0m[?25h
+Error: 
+   0: [91mCommand exited with status Exited(1)[0m
+
+Location:
+   [35msrc/commands.rs[0m:[35m151[0m

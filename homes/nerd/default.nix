@@ -7,7 +7,7 @@ in {
     #    self.homeManagerModules.gtklock # a home-manager module for gtklock, gotta upstream it eventually
 
     # home impermanence
-    ./impermanence
+    #./impermanence
 
     # home package sets
     ./packages

@@ -179,7 +179,7 @@
     #git+https://github.com/hyprwm/Hyprland?ref=v0.41.1&submodules=1
     hyprland = {
       type = "git";
-      url = "https://github.com/hyprwm/Hyprland?v0.41.1";
+      url = "https://github.com/hyprwm/Hyprland";
       submodules = true;
       inputs.nixpkgs.follows = "nixpkgs";
     };
