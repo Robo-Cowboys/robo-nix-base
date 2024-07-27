@@ -6,10 +6,10 @@
   inherit (lib) mkIf;
 in {
   config = mkIf config.modules.device.hasSound {
-    sound = {
-      enable = true;
-      mediaKeys.enable = true;
-    };
+#    sound = {
+#      enable = true;
+#      mediaKeys.enable = true;
+#    };
     services.pipewire = {
       enable = true;
       alsa = {
