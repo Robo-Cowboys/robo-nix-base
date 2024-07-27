@@ -1,12 +1,12 @@
 {lib, ...}: {
   # mildly improves performance for the disk encryption
   boot.initrd.availableKernelModules = [
-    "aesni_intel"
-    "cryptd"
-    "usb_storage"
+    #  "aesni_intel"
+    #  "cryptd"
+    #  "usb_storage"
   ];
 
-  services.lvm.enable = lib.mkForce true;
+  services.lvm.enable = lib.mkForce false;
 
   #  boot.initrd.luks.devices."enc" = {
   #    # improve performance on ssds

@@ -1,8 +1,8 @@
 {
   modules.system = {
     mainUser = "nerd";
-    fs = ["btrfs" "ext4" "vfat" "ntfs"];
-    autoLogin = false;
+    fs = ["ext4" "vfat" "ntfs"];
+    autoLogin = true;
 
     boot = {
       loader = "systemd-boot";
