@@ -12,8 +12,10 @@ in {
     home.packages = with pkgs; [
       #jetbrains.datagrip
       #jetbrains.phpstorm
-      jetbrains.idea-ultimate
+#      jetbrains.idea-ultimate
       #jetbrains.pycharm-professional
+      sublime4
+      sublime3
       kitty
       #btop
       #htop
