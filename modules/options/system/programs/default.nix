@@ -10,6 +10,7 @@ in {
     nordpass.enable = mkEnableOption "Nordpass client";
     gimp.enable = mkEnableOption "Gimp Image Editor";
     libreoffice.enable = mkEnableOption "LibreOffice suite";
+    mission-planner.enable = mkEnableOption "Mission Planner";
 
     element.enable = mkEnableOption "Element Matrix client";
     obs.enable = mkEnableOption "OBS Studio";

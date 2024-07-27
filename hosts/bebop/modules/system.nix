@@ -61,6 +61,7 @@
       signal-desktop.enable = true;
       nordpass.enable = false;
       gimp.enable = false;
+      mission-planner.enable = true;
 
       default = {
         terminal = "kitty";
