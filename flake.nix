@@ -168,7 +168,9 @@
     # mismatch if packages are builst against different versions
     # of the same depended packagaes
     hyprland = {
-      url = "github:hyprwm/Hyprland/v0.39.1";
+      type = "git";
+      url = "https://github.com/hyprwm/Hyprland";
+      submodules = true;
       inputs.nixpkgs.follows = "nixpkgs";
     };
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
