@@ -1,5 +1,10 @@
 # 🤖 RoBo SqUaD Nix ❄️S Template 🤖
 
+## Credits
+This project is 100% based on the work of [NotAShelf and his nyx repo](https://github.com/NotAShelf/nyx/).
+
+## Getting started
+
 Follow these steps to configure and use this Nix template:
 
 ### 1. Clone the Repository
@@ -79,3 +84,4 @@ nix build .#images.raspberry
 Ensure all configurations are correct before proceeding to avoid errors during deployment.
 
 ### 8. Profit! 💵
+
